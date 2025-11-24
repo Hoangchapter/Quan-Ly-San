@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Quản lý sân bóng Pickleball</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="brand">⚽ Quản lý sân Pickleball</div>
+
+        <nav class="menu">
+            <button class="menu-item active" data-page="overview">Tổng quan</button>
+            <button class="menu-item" data-page="courts">Quản lý sân</button>
+            <button class="menu-item" data-page="bookings">Đặt sân</button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="version">v1.0.0</div>
+            <button class="logout-btn" onclick="logout()">Đăng xuất</button>
+        </div>
+    </aside>
+
+
+    <main class="main">
+        <header class="topbar">
+            <div class="top-left">
+                <h1>Tổng quan</h1>
+                <div class="subtitle">Thống kê hoạt động quản lý sân Pickleball</div>
+            </div>
+            <div class="top-right" id="topDate"></div>
+        </header>
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="page">
+            <div class="card-grid">
+                <div class="card stat-card">
+                    <div class="label">Tổng số sân</div>
+                    <div class="value" id="statTotalCourts">0</div>
+                    <div class="foot">Sân đang hoạt động</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="label">Lượt đặt sân</div>
+                    <div class="value" id="statTotalBookings">0</div>
+                    <div class="foot">Tổng số lượt đặt</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="label">Doanh thu</div>
+                    <div class="value" id="statRevenue">0 đ</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="label">Đang hoạt động</div>
+                    <div class="value" id="statActiveToday">0</div>
+                    <div class="foot">Booking hôm nay</div>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="card list-card">
+                    <h3>Sân Pickleball phổ biến</h3>
+                    <div id="popularCourts"></div>
+                </div>
+
+                <div class="card list-card">
+                    <h3>Hoạt động gần đây</h3>
+                    <div id="recentActivity"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COURTS -->
+        <section id="courts" class="page hidden">
+            <div class="card">
+                <h3>Quản lý sân</h3>
+                <div class="form-row">
+                    <input id="courtNameInput" placeholder="Tên sân (ví dụ: Sân A)" />
+                    <select id="courtSizeInput">
+                        <option value="1">1 người</option>
+                        <option value="2">2 người</option>
+                    </select>
+                    <button id="addCourtBtn">Thêm sân</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Sức chứa</th>
+                                <th>Lượt đặt</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="courtsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKINGS -->
+        <section id="bookings" class="page hidden">
+            <div class="card">
+                <h3>Đặt sân</h3>
+                <form id="bookingForm" class="form-col">
+                    <div class="form-row">
+                        <input id="bkName" placeholder="Tên khách" required />
+                        <select id="bkCourt"></select>
+                    </div>
+
+                    <div class="form-row">
+                        <input id="bkDate" type="date" required />
+                        <select id="bkSlot">
+                            <option value="08:00-09:00">08:00 - 09:00</option>
+                            <option value="09:00-10:00">09:00 - 10:00</option>
+                            <option value="10:00-11:00">10:00 - 11:00</option>
+                            <option value="17:00-18:00">17:00 - 18:00</option>
+                            <option value="18:00-19:00">18:00 - 19:00</option>
+                            <option value="19:00-20:00">19:00 - 20:00</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <input id="bkNote" placeholder="Ghi chú (Số điện thoại)" />
+                        <input id="bkPrice" placeholder="Giá (vnđ)" type="number" min="0" />
+                    </div>
+
+                    <div class="form-row">
+                        <button type="submit">Đặt sân</button>
+                        <button type="button" id="resetBookingForm" class="secondary">Xóa form</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>Lịch đặt</h3>
+                <div class="table-wrap small">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Ngày</th>
+                                <th>Sân</th>
+                                <th>Khung giờ</th>
+                                <th>Khách</th>
+                                <th>Ghi chú</th>
+                                <th>Giá</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTable"></tbody>
+                    </table>
+                </div>
+
+                <div class="tool-row">
+                    <button id="exportBtn">Xuất JSON</button>
+                    <button id="importBtn" class="secondary">Nhập JSON</button>
+                    <input type="file" id="importFile" accept="application/json" style="display:none" />
+                    <button id="clearAll" class="danger">Xóa mọi lịch</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
