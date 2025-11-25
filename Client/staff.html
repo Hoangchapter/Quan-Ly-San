@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Nhân viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        
+        <div id="sidebar-placeholder"></div>
+
+        
+        <div class="main-content-area">
+
+            <header class="top-header">
+                <div class="page-title">
+                    <h1>Quản lý Nhân viên</h1>
+                    <p>Thêm, sửa, và xem thông tin chi tiết của đội ngũ nhân viên.</p>
+                </div>
+                <div class="user-profile">
+                    <div class="profile-avatar">Admin</div>
+                </div>
+            </header>
+
+            <div class="management-grid">
+                
+                <section class="card staff-list-card">
+                    <h3>Danh Sách Nhân Viên</h3>
+                    
+                    <button class="add-button">➕ Thêm Nhân Viên Mới</button>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table staff-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên Nhân Viên</th>
+                                    <th>Vị trí</th>
+                                    <th>Lương cơ bản</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>NV001</td>
+                                    <td>Nguyễn Văn Huy (Manager)</td>
+                                    <td>Quản lý</td>
+                                    <td>12,000,000₫</td>
+                                    <td class="status-active">Đang làm việc</td>
+                                    <td><button class="action-btn edit-btn">Sửa</button></td>
+                                </tr>
+                                <tr>
+                                    <td>NV002</td>
+                                    <td>Lê Thị An</td>
+                                    <td>Lễ tân</td>
+                                    <td>7,500,000₫</td>
+                                    <td class="status-active">Đang làm việc</td>
+                                    <td><button class="action-btn edit-btn">Sửa</button></td>
+                                </tr>
+                                <tr>
+                                    <td>NV003</td>
+                                    <td>Trần Minh Quân</td>
+                                    <td>Bảo trì sân</td>
+                                    <td>8,000,000₫</td>
+                                    <td class="status-maintenance">Nghỉ phép</td>
+                                    <td><button class="action-btn edit-btn">Sửa</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <section class="card staff-detail-card">
+                    <h3>Thông Tin Chi Tiết (Sửa NV001)</h3>
+                    
+                    <div class="form-group">
+                        <label for="staff-id">ID Nhân viên:</label>
+                        <input type="text" id="staff-id" value="NV001" disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="staff-name">Họ và Tên:</label>
+                        <input type="text" id="staff-name" value="Nguyễn Văn Huy">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="staff-position">Vị trí:</label>
+                        <select id="staff-position">
+                            <option value="manager" selected>Quản lý</option>
+                            <option value="receptionist">Lễ tân</option>
+                            <option value="technician">Bảo trì sân</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="staff-salary">Lương cơ bản (VND):</label>
+                        <input type="number" id="staff-salary" value="12000000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="staff-status">Trạng thái:</label>
+                        <select id="staff-status">
+                            <option value="active" selected>Đang làm việc</option>
+                            <option value="on-leave">Nghỉ phép</option>
+                            <option value="terminated">Đã thôi việc</option>
+                        </select>
+                    </div>
+                    
+                    <button class="save-button">💾 Lưu Cập Nhật</button>
+                    <button class="delete-button">🗑️ Xóa Nhân Viên</button>
+
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="loadSliderBar.js"> </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng quan</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+
+<body>
+    <div class="dashboard-wrapper">
+        
+        <div id="sidebar-placeholder"></div>
+        
+        <div class="main-content-area">
+
+            <header class="top-header">
+                <div class="page-title">
+                    <h1>Tổng quan hoạt động</h1>
+                    <p>Chào mừng trở lại, Admin!</p>
+                </div>
+                <div class="user-profile">
+                    <div class="profile-avatar">Admin</div>
+                </div>
+            </header>
+
+            <section class="kpi-container">
+                <div class="kpi-card income-kpi">
+                    <span class="kpi-icon">💰</span>
+                    <div>
+                        <div class="kpi-title">Tổng Doanh Thu (Hôm nay)</div>
+                        <div class="kpi-value">$3,250</div>
+                    </div>
+                </div>
+
+                <div class="kpi-card occupancy-kpi">
+                    <span class="kpi-icon">🎯</span>
+                    <div>
+                        <div class="kpi-title">Tỷ lệ lấp đầy</div>
+                        <div class="kpi-value">82%</div>
+                    </div>
+                </div>
+
+                <div class="kpi-card canceled-kpi">
+                    <span class="kpi-icon">❌</span>
+                    <div>
+                        <div class="kpi-title">Đơn bị hủy</div>
+                        <div class="kpi-value">4</div>
+                    </div>
+                </div>
+                
+                 <div class="kpi-card bookings-kpi">
+                    <span class="kpi-icon">📅</span>
+                    <div>
+                        <div class="kpi-title">Tổng số đơn</div>
+                        <div class="kpi-value">68</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="main-body-grid">
+                
+                <section class="chart-card large-card">
+                    <h3>Doanh thu theo 7 ngày gần nhất</h3>
+                    <div class="chart-placeholder">
+                        <p>Biểu đồ sẽ hiển thị tại đây</p>
+                    </div>
+                </section>
+
+                <section class="activity-card small-card">
+                    <h3>Hoạt động gần đây</h3>
+
+                    <div class="activity-list">
+                        <div class="activity-item new-booking">
+                            <span class="activity-icon">✅</span>
+                            + Đơn mới: Sân B - 10:00 - Khách: Minh
+                        </div>
+                        <div class="activity-item canceled-booking">
+                             <span class="activity-icon">🚫</span>
+                            + Đơn đã hủy: Sân A - 19:00
+                        </div>
+                        <div class="activity-item user-action">
+                             <span class="activity-icon">👤</span>
+                            + Nhân viên Huy đã tạo đơn mới lúc 14:35
+                        </div>
+                         <div class="activity-item new-booking">
+                             <span class="activity-icon">✅</span>
+                            + Đơn mới: Sân C - 20:00 - Khách: An
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="loadSliderBar.js"> </script>
+</body>
+</html>

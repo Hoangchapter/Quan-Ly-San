@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Sân & Giá</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        
+        <div id="sidebar-placeholder"></div>
+
+        
+        <div class="main-content-area">
+
+            <header class="top-header">
+                <div class="page-title">
+                    <h1>Quản lý Sân & Giá</h1>
+                    <p>Cập nhật thông tin chi tiết và giá thuê của các sân.</p>
+                </div>
+                <div class="user-profile">
+                    <div class="profile-avatar">Admin</div>
+                </div>
+            </header>
+
+            <div class="management-grid">
+                
+                <section class="card field-list-card">
+                    <h3>Danh sách các Sân</h3>
+                    
+                    <button class="add-button">➕ Thêm Sân Mới</button>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table field-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã Sân</th>
+                                    <th>Tên Sân</th>
+                                    <th>Kích thước</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="field-active">
+                                    <td>SB01</td>
+                                    <td>Sân A (Sân Lớn)</td>
+                                    <td>20m x 40m</td>
+                                    <td class="status-active">Hoạt động</td>
+                                    <td>
+                                        <button class="action-btn edit-btn">Sửa</button>
+                                        <button class="btn-delete">Xóa</button>
+                                    </td>
+                                    
+                                </tr>
+                                <tr class="field-active">
+                                    <td>SB02</td>
+                                    <td>Sân B (Sân Trung)</td>
+                                    <td>15m x 30m</td>
+                                    <td class="status-active">Hoạt động</td>
+                                    <td>
+                                        <button class="action-btn edit-btn">Sửa</button>
+                                        <button class="btn-delete">Xóa</button>
+                                    </td>
+                                </tr>
+                                <tr class="field-inactive">
+                                    <td>SB03</td>
+                                    <td>Sân C (Sân Mini)</td>
+                                    <td>10m x 20m</td>
+                                    <td class="status-maintenance">Bảo trì</td>
+                                    <td>
+                                        <button class="action-btn edit-btn">Sửa</button>
+                                        <button class="btn-delete">Xóa</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <section class="card pricing-card">
+                    <h3>Chỉnh Sửa Giá Thuê Sân A</h3>
+                    
+                    <div class="form-group">
+                        <label for="field-name">Tên Sân:</label>
+                        <input type="text" id="field-name" value="Sân A (Sân Lớn)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="field-size">Kích thước:</label>
+                        <input type="text" id="field-size" value="20m x 40m">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="field-status">Trạng thái:</label>
+                        <select id="field-status">
+                            <option value="active" selected>Hoạt động</option>
+                            <option value="maintenance">Bảo trì</option>
+                            <option value="disabled">Tạm khóa</option>
+                        </select>
+                    </div>
+
+                    <h4>Giá Thuê Theo Khung Giờ</h4>
+                    <table class="data-table price-table">
+                        <thead>
+                            <tr>
+                                <th>Khung giờ</th>
+                                <th>Giá (VND/giờ)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 - 16:00 (Thường)</td>
+                                <td><input type="number" value="250000" class="price-input"></td>
+                            </tr>
+                            <tr>
+                                <td>16:00 - 22:00 (Cao điểm)</td>
+                                <td><input type="number" value="400000" class="price-input"></td>
+                            </tr>
+                            <tr>
+                                <td>22:00 - 24:00 (Muộn)</td>
+                                <td><input type="number" value="300000" class="price-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <button class="save-button">💾 Lưu Cập Nhật</button>
+
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="loadSliderBar.js"></script>
+</body>
+</html>

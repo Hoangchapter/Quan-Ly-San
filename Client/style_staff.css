@@ -1,0 +1,463 @@
+/* GLOBAL STYLES */
+:root {
+    --primary-color: #007bff;
+    --accent-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --background-color: #f8f9fa;
+    --surface-color: #ffffff;
+    --text-color: #344767;
+    --secondary-text: #6c757d;
+    --border-color: #e9ecef;
+    --shadow-light: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+/* ------------------ STAFF HEADER & NAV ------------------ */
+.staff-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.staff-header h2 {
+    font-size: 20px;
+}
+
+.staff-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-item {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.profile-info .logout-btn {
+    margin-left: 20px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* ------------------ MAIN CONTENT & UTILITIES ------------------ */
+.main-content-staff {
+    padding: 30px;
+}
+
+.controls-bar {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    margin-bottom: 25px;
+}
+
+.filter-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #1e7e34;
+}
+
+.card {
+    background-color: var(--surface-color);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+}
+
+/* ------------------ ĐẶT SÂN (Booking Grid) ------------------ */
+#booking-content {
+    display: block;
+}
+
+/* Mặc định hiển thị */
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: 80px repeat(3, 1fr);
+    grid-template-rows: 50px repeat(14, 50px);
+    border: none;
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.header-cell {
+    background-color: #e9ecef;
+    padding: 10px 5px;
+    font-weight: 700;
+    text-align: center;
+    border-right: 1px solid var(--border-color);
+    line-height: 30px;
+}
+
+.time-slot {
+    grid-column: 1;
+    text-align: center;
+    padding: 0 10px 0 0;
+    font-size: 14px;
+    color: var(--secondary-text);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+
+    height: 100%;
+}
+
+.time-slot:nth-child(2) {
+    visibility: hidden;
+}
+
+.grid-cell {
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0;
+    position: relative;
+}
+
+.empty-slot {
+    background-color: var(--surface-color);
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.empty-slot:hover {
+    background-color: #f0f2f5;
+}
+
+.booked-slot {
+    
+    background-color: #dbeafe;
+    color: var(--text-color);
+    padding: 8px;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: none;
+    border-radius: 0;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.booked-slot:hover {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+.customer-name {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+}
+
+.status-badge.confirmed {
+    background-color: var(--accent-color);
+}
+
+.status-badge.pending {
+    background-color: var(--warning-color);
+    color: var(--text-color);
+}
+
+/* ------------------ LỊCH CA (Schedule Grid) ------------------ */
+#schedule-content {
+    display: none;
+}
+
+/* Mặc định ẩn */
+
+.schedule-table-container {
+    overflow-x: auto;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: 180px repeat(7, 1fr);
+    border: 1px solid var(--border-color);
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.schedule-header-cell {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 10px;
+    font-weight: 700;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.schedule-header-cell:last-child {
+    border-right: none;
+}
+
+.employee-col {
+    text-align: left;
+    position: sticky;
+    left: 0;
+    z-index: 20;
+    background-color: var(--primary-color);
+}
+
+.employee-name-cell {
+    background-color: #f1f5f9;
+    color: var(--text-color);
+    padding: 15px 10px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+    border-right: 2px solid #c0c0c0;
+    position: sticky;
+    left: 0;
+    z-index: 10;
+}
+
+.shift-cell {
+    padding: 10px;
+    text-align: center;
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shift-cell:last-child {
+    border-right: none;
+}
+
+/* .weekend {
+    background-color: #ffcdcd !important;
+} */
+
+.schedule-header-cell.weekend {
+    background-color: #ffc107;
+    color: var(--text-color);
+}
+
+.shift-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shift-morning {
+    background-color: #007bff;
+}
+
+.shift-afternoon {
+    background-color: #17a2b8;
+}
+
+.shift-night {
+    background-color: #6c757d;
+}
+
+.shift-full {
+    background-color: #28a745;
+}
+
+.shift-dayoff {
+    background-color: #dc3545;
+}
+
+/* ------------------ THÔNG BÁO (Notifications) ------------------ */
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.notification-item.unread {
+    background-color: #f0f8ff; /* Nền xanh nhẹ cho thông báo chưa đọc */
+    border-left: 5px solid var(--primary-color);
+    border-color: #cce5ff;
+}
+
+.notification-item.read {
+    opacity: 0.6;
+}
+
+.icon-box {
+    font-size: 24px;
+    margin-right: 15px;
+    padding: 10px;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.icon-box.new-booking { background-color: #e6f7ff; }
+.icon-box.shift-change { background-color: #fff3e0; }
+.icon-box.general-info { background-color: #e6ffe6; }
+
+
+.notification-details {
+    flex-grow: 1;
+    margin-right: 15px;
+}
+.notification-title {
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 3px;
+    font-size: 16px;
+}
+.notification-message {
+    font-size: 14px;
+    color: var(--secondary-text);
+}
+.notification-time {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #999;
+}
+
+.mark-read-btn {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+.mark-read-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ------------------ FORM TẠO/CHỈNH SỬA ĐƠN (MODAL/DIALOG) ------------------ */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Đen đậm hơn một chút để tập trung */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Quan trọng: Đặt nội dung vào giữa màn hình */
+    z-index: 1000;
+}
+
+.modal-content {
+    /* Điều chỉnh kích thước */
+    width: 95%; 
+    max-width: 550px; /* Giảm max-width để trông giống dialog hơn */
+    
+    padding: 30px;
+    border-radius: 12px;
+    background-color: var(--surface-color); /* Màu nền trắng */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Shadow nổi bật hơn */
+    
+    /* Thiết lập cho Dialog */
+    max-height: 95vh; /* Chiều cao tối đa là 95% màn hình */
+    overflow-y: auto; /* Cho phép cuộn chỉ khi nội dung thực sự quá dài */
+    
+    /* Hiệu ứng nhập cảnh nhẹ nhàng (Tùy chọn) */
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.2s ease-out;
+}
+
+/* Thêm class để kích hoạt hiệu ứng nhập cảnh khi modal được hiển thị */
+.modal-overlay[style*="display: flex"] .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Các style khác giữ nguyên */
+.form-actions {
+    /* Đảm bảo các nút hành động dính (nếu modal có cuộn) */
+    padding-top: 15px; 
+    background-color: var(--surface-color);
+    /* position: sticky; /* Tùy chọn: Nếu muốn nút dính ở dưới cùng */
+    /* bottom: 0; */ 
+    z-index: 10;
+    border-top: 1px solid var(--border-color);
+}

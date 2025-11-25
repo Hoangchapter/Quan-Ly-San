@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo & Thống kê</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        
+        <div id="sidebar-placeholder"></div>
+
+        
+        <div class="main-content-area">
+
+            <header class="top-header">
+                <div class="page-title">
+                    <h1>Báo cáo & Thống kê</h1>
+                    <p>Theo dõi hiệu suất doanh thu, sân và khách hàng.</p>
+                </div>
+                <div class="user-profile">
+                    <div class="profile-avatar">Admin</div>
+                </div>
+            </header>
+
+            <section class="card filter-card">
+                <div class="filter-controls">
+                    <div class="form-group filter-group">
+                        <label for="date-range">Phạm vi thời gian:</label>
+                        <select id="date-range">
+                            <option>Hôm nay</option>
+                            <option selected>7 ngày gần nhất</option>
+                            <option>Tháng này</option>
+                            <option>Tùy chỉnh...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group filter-group">
+                        <label for="field-selection">Chọn Sân:</label>
+                        <select id="field-selection">
+                            <option selected>Tất cả các sân</option>
+                            <option>Sân A</option>
+                            <option>Sân B</option>
+                        </select>
+                    </div>
+
+                    <button class="action-btn primary-btn">Xem Báo Cáo</button>
+                    <button class="action-btn export-btn">Xuất File (CSV) 💾</button>
+                </div>
+            </section>
+
+            <section class="kpi-container summary-kpi">
+                <div class="kpi-card income-kpi">
+                    <span class="kpi-icon">💰</span>
+                    <div>
+                        <div class="kpi-title">Tổng Doanh Thu</div>
+                        <div class="kpi-value">25,800,000₫</div>
+                        <div class="kpi-subtext growth">+12% so với tuần trước</div>
+                    </div>
+                </div>
+
+                <div class="kpi-card bookings-kpi">
+                    <span class="kpi-icon">📅</span>
+                    <div>
+                        <div class="kpi-title">Tổng Số Đơn</div>
+                        <div class="kpi-value">155</div>
+                        <div class="kpi-subtext growth">+5% so với tuần trước</div>
+                    </div>
+                </div>
+
+                <div class="kpi-card occupancy-kpi">
+                    <span class="kpi-icon">🎯</span>
+                    <div>
+                        <div class="kpi-title">Tỷ Lệ Lấp Đầy TB</div>
+                        <div class="kpi-value">78%</div>
+                        <div class="kpi-subtext decline">-2% so với tuần trước</div>
+                    </div>
+                </div>
+                
+                 <div class="kpi-card canceled-kpi">
+                    <span class="kpi-icon">❌</span>
+                    <div>
+                        <div class="kpi-title">Đơn bị Hủy</div>
+                        <div class="kpi-value">8</div>
+                        <div class="kpi-subtext decline">Tăng 2 đơn so với tuần trước</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card chart-card-lg">
+                <h3>Biểu đồ Doanh thu (VND) so với Số lượng đơn</h3>
+                <div class="chart-placeholder" style="height: 400px;">
+                    <p>Khu vực hiển thị biểu đồ cột hoặc đường</p>
+                </div>
+            </section>
+            
+            <section class="card detailed-data-card">
+                <h3>Bảng Doanh thu chi tiết theo ngày</h3>
+                
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ngày</th>
+                                <th>Doanh thu</th>
+                                <th>Số đơn</th>
+                                <th>Lấp đầy</th>
+                                <th>Chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>22/11/2025</td>
+                                <td>3,800,000₫</td>
+                                <td>25</td>
+                                <td>85%</td>
+                                <td><button class="action-btn">Xem</button></td>
+                            </tr>
+                            <tr>
+                                <td>21/11/2025</td>
+                                <td>3,500,000₫</td>
+                                <td>22</td>
+                                <td>75%</td>
+                                <td><button class="action-btn">Xem</button></td>
+                            </tr>
+                            <tr>
+                                <td>20/11/2025</td>
+                                <td>4,100,000₫</td>
+                                <td>28</td>
+                                <td>90%</td>
+                                <td><button class="action-btn">Xem</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <script src="loadSliderBar.js"> </script>
+</body>
+</html>
