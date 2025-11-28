@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('images/img_Slider.webp');
+    background-size: cover;
+    font-family: Inter, sans-serif
+}
+
+.login-box {
+    background: #fff;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    width: 320px
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 24px
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background: #10b981;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer
+}

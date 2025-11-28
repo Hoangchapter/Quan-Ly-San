@@ -1,10 +1,27 @@
 /* Reset & base */
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#f5f6fa; --card:#fff; --muted:#8b96a5; --accent:#2a57ff; --danger:#ff6b6b;
-  --shadow: 0 6px 20px rgba(2,6,23,0.06);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
 }
-body{font-family:"Inter",system-ui,Arial;background:var(--bg);color:#122;display:flex;min-height:100vh}
+
+:root {
+  --bg: #f5f6fa;
+  --card: #fff;
+  --muted: #8b96a5;
+  --accent: #2a57ff;
+  --danger: #ff6b6b;
+  --shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+}
+
+body {
+  font-family: "Inter", system-ui, Arial;
+  background-image: url("images/img_bg3.jpg");
+  color: #122;
+  display: flex;
+  min-height: 100vh;
+  background-size: cover;
+}
 
 /* Sidebar */
 .sidebar {
@@ -52,18 +69,19 @@ body{font-family:"Inter",system-ui,Arial;background:var(--bg);color:#122;display
 
 /* Footer */
 .sidebar-footer {
-  margin-top: auto; /* đẩy footer xuống dưới */
+  margin-top: auto;
+  /* đẩy footer xuống dưới */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .sidebar-footer .version {
   font-size: 12px;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Logout button */
@@ -84,49 +102,189 @@ body{font-family:"Inter",system-ui,Arial;background:var(--bg);color:#122;display
 }
 
 /* Main area */
-.main{flex:1;padding:28px}
-.topbar{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
-.topbar h1{font-size:22px}
-.subtitle{font-size:13px;color:var(--muted)}
-.top-right{font-size:13px;color:var(--muted)}
+.main {
+  flex: 1;
+  padding: 28px
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px
+}
+
+.topbar h1 {
+  font-size: 22px
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--muted)
+}
+
+.top-right {
+  font-size: 13px;
+  color: var(--muted)
+}
 
 /* Cards grid */
-.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:18px}
-.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);border:1px solid #eef2f6}
-.stat-card .label{font-size:13px;color:var(--muted);margin-bottom:6px}
-.stat-card .value{font-size:22px;font-weight:700}
-.stat-card .foot{font-size:12px;color:var(--muted);margin-top:8px}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 18px
+}
+
+.card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid #eef2f6
+}
+
+.stat-card .label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px
+}
+
+.stat-card .value {
+  font-size: 22px;
+  font-weight: 700
+}
+
+.stat-card .foot {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px
+}
 
 /* Section grid */
-.section-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.list-card h3{margin-bottom:10px}
-.list-item{padding:10px 12px;border-radius:8px;border:1px solid #f1f3f6;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px
+}
+
+.list-card h3 {
+  margin-bottom: 10px
+}
+
+.list-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #f1f3f6;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
 
 /* Tables & forms */
-.table-wrap{margin-top:12px;overflow:auto}
-.table{width:100%;border-collapse:collapse}
-.table thead th{font-size:13px;color:var(--muted);text-align:left;padding:10px 8px;border-bottom:1px solid #f0f2f5}
-.table tbody td{padding:10px 8px;border-bottom:1px solid #f8f9fb;font-size:14px}
-.form-row{display:flex;gap:10px;margin-top:10px}
-.form-row input,.form-row select{flex:1;padding:10px;border-radius:8px;border:1px solid #e6eef7}
-.form-col{display:flex;flex-direction:column}
-.button,button{padding:10px 12px;border-radius:8px;border:0;background:var(--accent);color:#fff;cursor:pointer}
-.secondary{background:#fff;border:1px solid #e6eef7;color:#334}
-.tool-row{display:flex;gap:8px;margin-top:12px;align-items:center}
-.danger{background:var(--card);border:1px solid #ffdede;color:var(--danger)}
+.table-wrap {
+  margin-top: 12px;
+  overflow: auto
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse
+}
+
+.table thead th {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid #f0f2f5
+}
+
+.table tbody td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #f8f9fb;
+  font-size: 14px
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e6eef7
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column
+}
+
+.button,
+button {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer
+}
+
+.secondary {
+  background: #fff;
+  border: 1px solid #e6eef7;
+  color: #334
+}
+
+.tool-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: center
+}
+
+.danger {
+  background: var(--card);
+  border: 1px solid #ffdede;
+  color: var(--danger)
+}
 
 /* small sizes */
-.small .table thead th{font-size:12px}
-.hidden{display:none}
+.small .table thead th {
+  font-size: 12px
+}
+
+.hidden {
+  display: none
+}
 
 /* responsive */
-@media(max-width:1000px){
-  .card-grid{grid-template-columns:repeat(2,1fr)}
-  .section-grid{grid-template-columns:1fr}
-}
-@media(max-width:640px){
-  .sidebar{display:none}
-  .main{padding:12px}
-  .card-grid{grid-template-columns:1fr}
+@media(max-width:1000px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr
+  }
 }
 
+@media(max-width:640px) {
+  .sidebar {
+    display: none
+  }
+
+  .main {
+    padding: 12px
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr
+  }
+}
