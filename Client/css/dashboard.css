@@ -1,0 +1,150 @@
+/* ============================================= */
+/* customer.css – ĐỒNG NHẤT HOÀN TOÀN VỚI COURT */
+/* ============================================= */
+
+/* BẮT BUỘC: Ghi đè lại .management-grid để luôn 2 cột trên desktop */
+.management-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Cột trái: Danh sách khách hàng */
+.customer-list-card {
+    grid-column: 1 / 2;
+}
+
+/* Cột phải: Form chi tiết / thêm mới */
+.customer-detail-card {
+    grid-column: 2 / 3;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    height: fit-content;
+}
+
+/* Ẩn form chi tiết khi chưa chọn khách */
+#customer-edit-card {
+    display: none;
+}
+
+/* Khi mở form → hiện */
+#customer-edit-card.active {
+    display: block !important;
+}
+
+/* Bảng khách hàng đẹp hơn */
+.customer-table thead {
+    background: var(--primary-color);
+    color: white;
+}
+
+.customer-table tbody tr {
+    background: #fdfdfd;
+    transition: all 0.2s;
+}
+
+.customer-table tbody tr:hover {
+    background: #f0f7ff;
+    cursor: pointer;
+}
+
+/* Nút hành động trong bảng */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.edit-btn, .delete-btn {
+    padding: 6px 11px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.edit-btn   { background: #007bff; color: white; }
+.edit-btn:hover { background: #0056b3; }
+
+.delete-btn { background: var(--danger-color); color: white; }
+.delete-btn:hover { background: #c82333; }
+
+/* Form chi tiết đẹp hơn */
+#customer-detail-form .form-group {
+    margin-bottom: 22px;
+}
+
+#customer-detail-form label {
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#customer-detail-form input,
+#customer-detail-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+#customer-detail-form input:focus,
+#customer-detail-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+}
+
+/* Nút trong form */
+#save-customer-details-btn,
+#cancel-edit-btn {
+    padding: 12px 22px;
+    font-size: 15px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#cancel-edit-btn {
+    background: #6c757d;
+}
+
+#cancel-edit-btn:hover {
+    background: #5a6268;
+}
+
+/* Lịch sử đặt sân */
+.history-list {
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 2px dashed #eee;
+}
+
+.history-list .activity-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14.5px;
+    color: #444;
+}
+
+/* RESPONSIVE – Mobile chuyển 1 cột, form lên trên */
+@media (max-width: 1200px) {
+    .management-grid {
+        grid-template-columns: 1fr;
+    }
+    .customer-list-card,
+    .customer-detail-card {
+        grid-column: 1 / -1;
+    }
+    .customer-detail-card {
+        order: -1; /* Form lên trên cùng khi mobile */
+    }
+}

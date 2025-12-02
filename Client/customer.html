@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Khách hàng</title>
-    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
     <div class="dashboard-wrapper">
-        
         <div id="sidebar-placeholder"></div>
-
-        
         <div class="main-content-area">
 
             <header class="top-header">
@@ -24,100 +22,67 @@
                     <div class="profile-avatar">Admin</div>
                 </div>
             </header>
-
             <div class="management-grid">
-                
                 <section class="card customer-list-card">
                     <h3>Danh Sách Khách Hàng</h3>
-                    
-                    <button class="add-button">➕ Thêm Khách Hàng Mới</button>
-                    
+
+                    <!-- <button class="add-button" id="add-customer-button-in-list">➕ Thêm Khách Hàng Mới</button> -->
+
                     <div class="table-responsive">
                         <table class="data-table customer-table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>STT</th>
                                     <th>Tên Khách hàng</th>
                                     <th>SĐT</th>
-                                    <th>Tổng Chi</th>
-                                    <th>Hạng</th>
-                                    <th>Hành động</th>
+                                    <th>Email</th>
+                                    <!-- <th>Thao tác</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>KH001</td>
-                                    <td>Phạm Minh Đức</td>
-                                    <td>0901xxxxxx</td>
-                                    <td>15,500,000₫</td>
-                                    <td class="rank-vip">VIP</td>
-                                    <td><button class="action-btn edit-btn">Sửa</button></td>
-                                </tr>
-                                <tr>
-                                    <td>KH002</td>
-                                    <td>Lê Văn Tuấn</td>
-                                    <td>0988xxxxxx</td>
-                                    <td>5,200,000₫</td>
-                                    <td class="rank-gold">Thân thiết</td>
-                                    <td><button class="action-btn edit-btn">Sửa</button></td>
-                                </tr>
-                                <tr>
-                                    <td>KH003</td>
-                                    <td>Hoàng Thị Mai</td>
-                                    <td>0912xxxxxx</td>
-                                    <td>800,000₫</td>
-                                    <td class="rank-normal">Thường</td>
-                                    <td><button class="action-btn edit-btn">Sửa</button></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </section>
-                
-                <section class="card customer-detail-card">
-                    <h3>Thông Tin & Lịch Sử (KH001)</h3>
-                    
-                    <div class="form-group">
-                        <label for="customer-name">Họ và Tên:</label>
-                        <input type="text" id="customer-name" value="Phạm Minh Đức">
-                    </div>
 
+                <!-- <section class="card customer-detail-card" id="customer-edit-card">
+                    <h3>📝 Chi Tiết Khách Hàng</h3>
+
+                    <form id=" customer-detail-form" onsubmit="event.preventDefault();">
+
+                    <div class="form-group">
+                        <label for="customer-name">Tên Khách hàng:</label>
+                        <input type="text" id="customer-name" required placeholder="Nguyễn Văn A">
+                    </div>
                     <div class="form-group">
                         <label for="customer-phone">Số Điện Thoại:</label>
-                        <input type="text" id="customer-phone" value="0901xxxxxx">
+                        <input type="tel" id="customer-phone" required placeholder="090...">
                     </div>
-                    
                     <div class="form-group">
-                        <label for="customer-rank">Hạng Khách hàng:</label>
-                        <select id="customer-rank">
-                            <option value="vip" selected>VIP</option>
-                            <option value="gold">Thân thiết</option>
-                            <option value="normal">Thường</option>
-                        </select>
+                        <label for="customer-email">Email:</label>
+                        <input type="email" id="customer-email" required placeholder="nguyenvana@example.com">
                     </div>
 
-                    <button class="save-button">💾 Lưu Cập Nhật</button>
+                    <button class="save-button" id="save-customer-details-btn">💾 Lưu Cập Nhật</button>
+                    <button type="button" class="action-btn" id="cancel-edit-btn">⬅️ Hủy/Quay Lại</button>
 
-                    <h4 style="margin-top: 25px;">Lịch Sử Đặt Sân Gần Nhất</h4>
+
                     <ul class="activity-list history-list">
-                        <li class="activity-item history-item">
-                            <span class="activity-icon">✅</span>
-                            20/11: Sân A, 19:00 - 20:00. Giá: 400,000₫
-                        </li>
-                        <li class="activity-item history-item">
-                            <span class="activity-icon">✅</span>
-                            15/11: Sân B, 20:00 - 21:30. Giá: 600,000₫
-                        </li>
-                        <li class="activity-item history-item canceled-booking">
-                            <span class="activity-icon">🚫</span>
-                            10/11: Đã Hủy - Sân C, 17:00.
-                        </li>
                     </ul>
+                    </form>
+                </section> -->
 
-                </section>
+
+
             </div>
         </div>
     </div>
-    <script src="loadSliderBar.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/Client/js/client_config.js"></script>
+    <script src="/Client/js/loadSliderBar.js"> </script>
+    <link rel="stylesheet" href="/Client/css/style_base.css">
+    <link rel="stylesheet" href="/Client/css/customer.css">
+    <script src="/Client/js/customer.js"> </script>
 </body>
+
 </html>

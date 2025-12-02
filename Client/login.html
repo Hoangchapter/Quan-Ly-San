@@ -1,12 +1,11 @@
-
 <html lang="vi">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Đăng nhập - Quản lý Sân Pickleball</title>
-  <link rel="stylesheet" href="style_login.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="/Client/css/style_login.css">
+
 </head>
 
 <body>
@@ -16,10 +15,16 @@
       <input type="email" id="email" placeholder="Email đăng nhập" required />
       <input type="password" id="password" placeholder="Mật khẩu" required />
       <button type="submit" id="loginBtn">Đăng nhập</button>
+      <p style="text-align: center; margin-top: 10px;">
+        <!-- Chưa có tài khoản? <a href="register.html" style="color:#10b981; font-weight:600;">Đăng ký</a></p> -->
     </form>
     <p id="message"></p>
   </div>
-  <script src=" supabase-client.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/Client/js/client_config.js"></script>
+  <script src="/Client/js/supabase-client.js"></script>
+
 </body>
 
 </html>

@@ -1,17 +1,10 @@
-<!DOCTYPE html>
 <html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Nhân viên</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Ban đầu ẩn Form Thêm mới và chỉ hiện Form Sửa */
-        #add-staff-card {
-            display: none; 
-        }
-    </style>
+
 </head>
 
 <body>
@@ -39,82 +32,31 @@
                     <button class="add-button" id="add-staff-button">➕ Thêm Nhân Viên Mới</button>
 
                     <div class="table-responsive">
-                        <table class="data-table staff-table" id="staff-list-table">
+                        <table class="data-table staff-table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Tên Nhân Viên</th>
-                                    <th>Vị trí</th>
-                                    <th>Lương cơ bản</th>
-                                    <th>Trạng thái</th>
+                                    <th>STT</th>
+                                    <th>Tên Nhân viên</th>
+                                    <th>Email</th>
+                                    <th>Vai trò</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody id="staff-list-tbody">
                                 <tr>
-                                    <td>NV001</td>
-                                    <td>Nguyễn Văn Huy (Manager)</td>
-                                    <td>Quản lý</td>
-                                    <td>12,000,000₫</td>
-                                    <td class="status-active">Đang làm việc</td>
-                                    <td><button class="action-btn edit-btn" data-id="NV001">Sửa</button></td>
+                                    <td colspan="6">Đang tải danh sách nhân viên...</td>
                                 </tr>
-                                <tr>
-                                    <td>NV002</td>
-                                    <td>Lê Thị An</td>
-                                    <td>Lễ tân</td>
-                                    <td>7,500,000₫</td>
-                                    <td class="status-active">Đang làm việc</td>
-                                    <td><button class="action-btn edit-btn" data-id="NV002">Sửa</button></td>
-                                </tr>
-                                </tbody>
+                            </tbody>
                         </table>
                     </div>
                 </section>
 
-                <section class="card" id="staff-detail-card">
-                    <h3>Thông Tin Chi Tiết (Sửa NV001)</h3>
-                    <form id="edit-staff-form">
+                <!-- <section class="card staff-edit-card" id="add-staff-card">
+                    <h3>➕ Thêm Tài Khoản Nhân Viên Mới</h3>
+                    <form id="new-staff-form">
                         <div class="form-group">
-                            <label for="staff-id">ID Nhân viên:</label>
-                            <input type="text" id="staff-id" value="NV001" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="staff-name">Họ và Tên:</label>
-                            <input type="text" id="staff-name" value="Nguyễn Văn Huy">
-                        </div>
-                        <div class="form-group">
-                            <label for="staff-position">Vị trí:</label>
-                            <select id="staff-position">
-                                <option value="manager" selected>Quản lý</option>
-                                <option value="receptionist">Lễ tân</option>
-                                <option value="technician">Bảo trì sân</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="staff-salary">Lương cơ bản (VND):</label>
-                            <input type="number" id="staff-salary" value="12000000">
-                        </div>
-                        <div class="form-group">
-                            <label for="staff-status">Trạng thái:</label>
-                            <select id="staff-status">
-                                <option value="active" selected>Đang làm việc</option>
-                                <option value="on-leave">Nghỉ phép</option>
-                                <option value="terminated">Đã thôi việc</option>
-                            </select>
-                        </div>
-                        <button class="save-button" type="submit">💾 Lưu Cập Nhật</button>
-                        <button class="delete-button" type="button">🗑️ Xóa Nhân Viên</button>
-                    </form>
-                </section>
-
-                <section class="card" id="add-staff-card">
-                    <h3>➕ Tạo Tài Khoản Mới</h3>
-                    
-                    <form id="add-staff-form">
-                        <div class="form-group">
-                            <label for="staff-name">Tên:</label>
-                            <input type="text" id="staff-name" required placeholder="Nguyễn Văn A">
+                            <label for="staff-name-new">Tên Nhân viên:</label>
+                            <input type="text" id="staff-name-new" required placeholder="Nguyễn Văn A">
                         </div>
                         <div class="form-group">
                             <label for="staff-email">Email đăng nhập:</label>
@@ -123,29 +65,62 @@
 
                         <div class="form-group">
                             <label for="staff-password">Mật khẩu:</label>
-                            <input type="password" id="staff-password" required placeholder="Nhập mật khẩu (ít nhất 6 ký tự)">
+                            <input type="password" id="staff-password" required
+                                placeholder="Nhập mật khẩu (ít nhất 6 ký tự)">
                         </div>
 
                         <div class="form-group">
                             <label for="staff-role-new">Vị trí/Vai trò:</label>
                             <select id="staff-role-new" required>
-                                <option value="staff">Nhân viên (Staff)</option>
+                                <option value="employee">Nhân viên (Staff)</option>
+
                             </select>
                         </div>
 
                         <button type="submit" class="save-button"> Tạo Tài Khoản </button>
+                        <button type="button" class="action-btn" id="cancel-edit-btn">⬅️ Hủy/Quay Lại</button>
                     </form>
-                    
+
                     <p id="admin-message" style="margin-top: 15px; font-weight: bold;"></p>
+                </section> -->
+
+                <section class="card staff-edit-card" id="staff-detail-card">
+                    <h3 id="form-title">✏️ Cập Nhật Chi Tiết Nhân Viên</h3>
+                    <form id="staff-unified-form">
+                        <div class="form-group">
+                            <label for="staff-name-input">Tên Nhân viên:</label>
+                            <input type="text" id="staff-name-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="staff-email-input">Email:</label>
+                            <input type="email" id="staff-email-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="staff-password-input">Mật khẩu:</label>
+                            <input type="password" id="staff-password-input"
+                                placeholder="Để trống nếu không muốn thay đổi">
+                        </div>
+                        <div class="form-group">
+                            <label for="staff-role-input">Vị trí/Vai trò:</label>
+                            <select id="staff-role-input" required>
+                                <option value="employee">Nhân viên (Staff)</option>
+                            </select>
+                        </div>
+                        <button type="submit" id="save-staff-btn" class="save-button"> Lưu Cập Nhật </button>
+                        <button type="button" id="cancel-staff-btn" class="action-btn">Hủy</button>
+                    </form>
                 </section>
-                </div>
+
+            </div>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <script src="dashboard_logic.js"></script> 
-    
-    <script src="loadSliderBar.js"> </script>
+    <script src="/Client/js/client_config.js"></script>
+    <script src="/Client/js/staff.js"></script>
+    <script src="/Client/js/loadSliderBar.js"> </script>
+    <link rel="stylesheet" href="/Client/css/style_base.css">
+    <link rel="stylesheet" href="/Client/css/staff.css">
 </body>
+
 </html>
