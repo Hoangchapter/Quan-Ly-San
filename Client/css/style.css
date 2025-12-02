@@ -283,6 +283,7 @@ body {
     }
     .main-content-area {
         padding: 20px;
+        margin-left: 0; /* Quan trọng cho di động */
     }
 }
 
@@ -363,7 +364,7 @@ body {
     color: #991b1b;
 }
 
-/* ACTION BUTTONS */
+/* ACTION BUTTONS (Quy tắc chung) */
 .btn-edit {
     background: #3b82f6;
     color: white;
@@ -385,8 +386,9 @@ body {
 .btn-edit:hover { background: #1d4ed8; }
 .btn-delete:hover { background: #b91c1c; }
 
-/* ===== STAFF PAGE CUSTOM ===== */
+/* ===== STAFF PAGE CUSTOM (Thiết lập dành riêng cho trang Nhân viên) ===== */
 
+/* Kích thước cột (của bảng cũ, giữ lại để tương thích) */
 .table th:nth-child(1),
 .table td:nth-child(1) {
     width: 22%;
@@ -413,6 +415,34 @@ body {
 .table td:nth-child(6) {
     width: 18%;
 }
+
+/* KHẮC PHỤC CĂN CHỈNH NÚT 1: Nút Sửa trong Bảng */
+.staff-table td:last-child {
+    text-align: center; /* Căn giữa nội dung cột Hành động */
+    width: 100px; /* Chiều rộng cố định cho cột gọn hơn */
+    vertical-align: middle; 
+}
+
+/* Sửa nút .action-btn để nó gọn và căn chỉnh đúng */
+.action-btn { 
+    display: inline-block; /* Quan trọng: Đảm bảo nút nằm gọn trong ô */
+    padding: 6px 10px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--surface-color);
+    color: var(--primary-color);
+    border-radius: 6px; 
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 2px; /* Khoảng cách nhỏ giữa các nút */
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+/* END KHẮC PHỤC CĂN CHỈNH NÚT 1 */
+
 
 /* ------------------------------------- */
 /* BỔ SUNG CSS CHO TRANG QUẢN LÝ SÂN */
@@ -545,26 +575,11 @@ body {
 .save-button {
     background-color: var(--primary-color); /* Xanh dương */
     color: white;
-    margin-top: 20px;
+    /* margin-top: 20px; - Đã được chuyển vào .form-actions */
 }
 
 .save-button:hover {
     background-color: #0056b3;
-}
-
-.action-btn {
-    padding: 5px 10px;
-    border: 1px solid var(--primary-color);
-    background-color: var(--surface-color);
-    color: var(--primary-color);
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.action-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
 }
 
 /* RESPONSIVENESS */
@@ -575,10 +590,8 @@ body {
 }
 
 /* ------------------------------------- */
-/* BỔ SUNG CSS CHO TRANG QUẢN LÝ NHÂN VIÊN */
+/* BỔ SUNG CSS CHO TRANG QUẢN LÝ NHÂN VIÊN (Tiếp theo) */
 /* ------------------------------------- */
-
-/* Vị trí của các cột trong grid đã được định nghĩa trong trang Quản lý Sân */
 
 /* Status (Sử dụng lại class từ Quản lý Sân) */
 .status-active {
@@ -600,7 +613,7 @@ body {
 /* Delete Button */
 .delete-button {
     padding: 10px 15px;
-    margin-left: 10px; 
+    /* margin-left: 10px; - Đã được chuyển vào .form-actions */
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -613,6 +626,15 @@ body {
 .delete-button:hover {
     background-color: #c82333;
 }
+
+/* KHẮC PHỤC CĂN CHỈNH NÚT 2: Nút Lưu/Xóa trong Form Chi tiết */
+.form-actions {
+    display: flex; 
+    justify-content: flex-start; /* Nút sẽ nằm cạnh nhau, căn lề trái */
+    gap: 10px; /* Khoảng cách giữa nút Lưu và nút Xóa */
+    margin-top: 25px; /* Khoảng cách từ các form group phía trên */
+}
+/* END KHẮC PHỤC CĂN CHỈNH NÚT 2 */
 
 /* ------------------------------------- */
 /* BỔ SUNG CSS CHO TRANG BÁO CÁO & THỐNG KÊ */

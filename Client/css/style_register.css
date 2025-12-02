@@ -5,7 +5,7 @@ body {
     height: 100vh;
     background-image: url('images/img_Slider.webp');
     background-size: cover;
-    font-family: Inter, sans-serif
+    font-family: Inter, sans-serif;
 }
 
 .login-box {
@@ -13,12 +13,12 @@ body {
     padding: 32px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    width: 320px
+    width: 320px;
 }
 
 .login-box h2 {
     text-align: center;
-    margin-bottom: 24px
+    margin-bottom: 24px;
 }
 
 .login-box input {
@@ -27,7 +27,7 @@ body {
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    font-size: 14px
+    font-size: 14px;
 }
 
 .login-box button {
@@ -38,5 +38,5 @@ body {
     border: none;
     border-radius: 8px;
     font-weight: 600;
-    cursor: pointer
+    cursor: pointer;
 }

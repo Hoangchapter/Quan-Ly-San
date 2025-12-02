@@ -1,0 +1,69 @@
+/* Styles RIÊNG cho trang Báo cáo & Thống kê */
+
+.filter-controls {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end; 
+}
+
+.filter-group {
+    flex-grow: 1;
+}
+
+/* KPI SUMMARY (Dành cho trang Báo cáo)*/
+.summary-kpi .kpi-value {
+    font-size: 32px;
+}
+
+.summary-kpi .kpi-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.kpi-change {
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.growth {
+    color: var(--accent-color); /* Xanh lá*/
+}
+
+.decline {
+    color: var(--danger-color); /* Đỏ*/
+}
+
+/* Button Màu chính*/
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+.export-btn {
+    background-color: #ffc107; /* Màu vàng nổi bật cho Export*/
+    color: var(--text-color);
+    border: none;
+}
+
+.export-btn:hover {
+    background-color: #e0a800;
+}
+
+/* Adjustments for responsiveness in filter controls*/
+@media (max-width: 992px) {
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-group select,
+    .primary-btn,
+    .export-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
