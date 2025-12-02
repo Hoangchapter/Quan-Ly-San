@@ -62,7 +62,7 @@ async function fetchAndRenderVenues() {
 
     const newOption = document.createElement('option');
     newOption.value = 'new_venue';
-    newOption.textContent = '➕ Tạo Khu Vực Mới';
+    newOption.textContent = ' Tạo Khu Vực Mới';
     select.appendChild(newOption);
 }
 
@@ -131,8 +131,8 @@ function setupCourtForm(mode = 'add', data = null) { // data là Court object
 
     if (mode === 'add') {
         currentCourtId = null;
-        title.textContent = "➕ Thêm Sân Mới";
-        saveButton.textContent = "➕ Tạo Sân";
+        title.textContent = " Thêm Sân Mới";
+        saveButton.textContent = " Tạo Sân";
 
         // Reset Venue
         // Cần reset Venue select box về 'new' để form Venue được kích hoạt
@@ -260,7 +260,7 @@ async function handleDeleteCourt(courtId) {
         return;
     }
 
-    alert(`✅ Xóa Sân ID: ${courtId} thành công!`);
+    alert(` Xóa Sân ID: ${courtId} thành công!`);
     fetchCourtsList();
     document.getElementById('court-edit-card').style.display = 'none';
 }
@@ -374,7 +374,7 @@ async function handleSaveCourt(e) {
                 .single();
 
             if (newVenueError) {
-                alert(`❌ Lỗi tạo Khu vực mới: ${newVenueError.message}`);
+                alert(` Lỗi tạo Khu vực mới: ${newVenueError.message}`);
                 return;
             }
             venueId = newVenue.id;
@@ -434,11 +434,11 @@ async function handleSaveCourt(e) {
         const { error: courtError } = result;
 
         if (courtError) {
-            alert(`❌ Lỗi ${currentCourtId ? 'cập nhật' : 'tạo mới'} sân: ${courtError.message}`);
+            alert(` Lỗi ${currentCourtId ? 'cập nhật' : 'tạo mới'} sân: ${courtError.message}`);
             return;
         }
 
-        alert(`✅ ${currentCourtId ? 'Cập nhật' : 'Tạo mới'} sân ${courtUpdates.name} thành công!`);
+        alert(` ${currentCourtId ? 'Cập nhật' : 'Tạo mới'} sân ${courtUpdates.name} thành công!`);
 
         await fetchAndRenderVenues();
         setupCourtForm('add');
@@ -446,7 +446,7 @@ async function handleSaveCourt(e) {
 
     } catch (error) {
         console.error("Lỗi toàn cục khi lưu:", error);
-        alert(`❌ Đã xảy ra lỗi không xác định: ${error.message}`);
+        alert(` Đã xảy ra lỗi không xác định: ${error.message}`);
     } finally {
         saveButton.disabled = false;
         saveButton.textContent = currentCourtId ? '💾 Lưu Cập Nhật Sân' : '➕ Tạo Sân';
