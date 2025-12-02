@@ -125,7 +125,7 @@ body {
 .booking-grid {
     display: grid;
     grid-template-columns: 80px repeat(3, 1fr);
-    grid-template-rows: 50px repeat(14, 50px);
+    grid-template-rows: 50px repeat(15, 50px);
     border: none;
     margin-top: 15px;
     border-radius: 8px;

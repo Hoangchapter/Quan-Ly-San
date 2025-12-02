@@ -21,9 +21,10 @@
                 <a id="nav-notification" class="nav-item" data-content="notification-content">Thông báo</a>
             </nav>
             <div class="profile-info">
-                <span class="user-name">Chào, Lê Thị An (Lễ tân)</span>
-                <span class="logout-btn">Đăng xuất</span>
+                <span class="user-name" id="userName"></span>
+                <span class="logout-btn" id="logoutBtn">Đăng xuất</span>
             </div>
+
         </header>
 
 
@@ -43,11 +44,12 @@
                             <option>Sân B</option>
                         </select>
                     </div>
+
                     <button class="btn-primary create-btn">➕ Tạo Đơn Mới</button>
                 </div>
 
                 <section class="booking-grid-container card">
-                    <h3>Lịch Đặt Sân Hôm Nay (25/11/2025)</h3>
+                    <h3>Lịch Đặt Sân Hôm Nay</h3>
 
                     <div class="booking-grid">
                         <div class="header-cell">Giờ</div>
@@ -55,6 +57,9 @@
                         <div class="header-cell">Sân B</div>
                         <div class="header-cell">Sân C</div>
 
+
+                        <!-- 15 dòng giờ từ 08 → 22 -->
+                        <!-- Các khung giờ đều 60px -->
                         <div class="time-slot" style="grid-row: 2;">08:00</div>
                         <div class="time-slot" style="grid-row: 3;">09:00</div>
                         <div class="time-slot" style="grid-row: 4;">10:00</div>
@@ -72,10 +77,8 @@
                         <div class="time-slot" style="grid-row: 16;">22:00</div>
 
                         <div class="grid-cell empty-slot" style="grid-row: 2; grid-column: 2;"></div>
-                        <div class="grid-cell booked-slot slot-2h" style="grid-row: 3 / span 2; grid-column: 2;">
-                            <p class="customer-name">KH001 - Phạm Đức</p>
-                            <span class="status-badge confirmed">Đã cọc</span>
-                        </div>
+                        <div class="grid-cell empty-slot" style="grid-row: 3; grid-column: 2;"></div>
+                        <div class="grid-cell empty-slot" style="grid-row: 4; grid-column: 2;"></div>
                         <div class="grid-cell empty-slot" style="grid-row: 5; grid-column: 2;"></div>
                         <div class="grid-cell empty-slot" style="grid-row: 6; grid-column: 2;"></div>
                         <div class="grid-cell empty-slot" style="grid-row: 7; grid-column: 2;"></div>
@@ -96,10 +99,9 @@
                         <div class="grid-cell empty-slot" style="grid-row: 6; grid-column: 3;"></div>
                         <div class="grid-cell empty-slot" style="grid-row: 7; grid-column: 3;"></div>
                         <div class="grid-cell empty-slot" style="grid-row: 8; grid-column: 3;"></div>
-                        <div class="grid-cell booked-slot slot-3h" style="grid-row: 9 / span 3; grid-column: 3;">
-                            <p class="customer-name">KH008 - Hợp đồng</p>
-                            <span class="status-badge confirmed">Đã TT</span>
-                        </div>
+                        <div class="grid-cell empty-slot" style="grid-row: 9; grid-column: 3;"></div>
+                        <div class="grid-cell empty-slot" style="grid-row: 10; grid-column: 3;"></div>
+                        <div class="grid-cell empty-slot" style="grid-row: 11; grid-column: 3;"></div>
                         <div class="grid-cell empty-slot" style="grid-row: 12; grid-column: 3;"></div>
                         <div class="grid-cell empty-slot" style="grid-row: 13; grid-column: 3;"></div>
                         <div class="grid-cell empty-slot" style="grid-row: 14; grid-column: 3;"></div>
@@ -143,7 +145,7 @@
                 </div>
 
                 <section class="schedule-table-container card">
-                    <h3>Lịch Làm Việc Của Bạn: Tuần 48 (24/11 - 30/11/2025)</h3>
+                    <h3>Lịch Làm Việc Của Bạn</h3>
                     <div class="schedule-grid personal-schedule-grid">
 
                         <div class="schedule-header-cell employee-col">Ca làm việc</div>
@@ -271,13 +273,41 @@
                         <div class="form-group half-width">
                             <label>Thời gian bắt đầu:</label>
                             <select id="edit-start-time">
+                                <option value="08:00" selected>08:00</option>
                                 <option value="09:00" selected>09:00</option>
+                                <option value="10:00" selected>10:00</option>
+                                <option value="11:00" selected>11:00</option>
+                                <option value="12:00" selected>12:00</option>
+                                <option value="13:00" selected>13:00</option>
+                                <option value="14:00" selected>14:00</option>
+                                <option value="15:00" selected>15:00</option>
+                                <option value="16:00" selected>16:00</option>
+                                <option value="17:00" selected>17:00</option>
+                                <option value="18:00" selected>18:00</option>
+                                <option value="19:00" selected>19:00</option>
+                                <option value="20:00" selected>20:00</option>
+                                <option value="21:00" selected>21:00</option>
+                                <option value="22:00" selected>22:00</option>
                             </select>
                         </div>
                         <div class="form-group half-width">
                             <label>Thời gian kết thúc:</label>
                             <select id="edit-end-time">
+                                <option value="08:00" selected>08:00</option>
+                                <option value="09:00" selected>09:00</option>
+                                <option value="10:00" selected>10:00</option>
                                 <option value="11:00" selected>11:00</option>
+                                <option value="12:00" selected>12:00</option>
+                                <option value="13:00" selected>13:00</option>
+                                <option value="14:00" selected>14:00</option>
+                                <option value="15:00" selected>15:00</option>
+                                <option value="16:00" selected>16:00</option>
+                                <option value="17:00" selected>17:00</option>
+                                <option value="18:00" selected>18:00</option>
+                                <option value="19:00" selected>19:00</option>
+                                <option value="20:00" selected>20:00</option>
+                                <option value="21:00" selected>21:00</option>
+                                <option value="22:00" selected>22:00</option>
                             </select>
                         </div>
                     </div>
@@ -348,15 +378,37 @@
                                 <option value="08:00">08:00</option>
                                 <option value="09:00">09:00</option>
                                 <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
                                 <option value="21:00">21:00</option>
+                                <option value="22:00">22:00</option>
                             </select>
                         </div>
                         <div class="form-group half-width">
                             <label for="new-end-time">Kết thúc <span class="required">*</span></label>
                             <select id="new-end-time">
+                                <option value="08:00">08:00</option>
                                 <option value="09:00">09:00</option>
                                 <option value="10:00">10:00</option>
                                 <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
                                 <option value="22:00">22:00</option>
                             </select>
                         </div>
@@ -426,141 +478,9 @@
         // Thiết lập nội dung mặc định khi load trang
         showContent('booking-content', '⚽ Quản lý Đặt Sân');
 
-
-        // ---------------------- LOGIC CHUNG CHO CÁC MODAL ----------------------
-
-        // Tạo Modal
-        const newModal = document.getElementById('newBookingModal');
-        const createNewBookingBtn = document.querySelector('.create-btn');
-        const closeNewModalBtn = document.getElementById('closeNewModalBtn');
-
-        // Chỉnh sửa Modal (từ phần trước)
-        const editModal = document.getElementById('editBookingModal');
-        const closeEditModalBtn = document.getElementById('closeEditModalBtn');
-
-        // Hàm đóng Modal
-        function closeModal(modalElement) {
-            modalElement.style.display = 'none';
-        }
-
-        // Hàm tính toán giá trị (DEMO)
-        function calculateTotal() {
-            const startTime = document.getElementById('new-start-time').value;
-            const endTime = document.getElementById('new-end-time').value;
-
-            // Chuyển giờ thành số phút
-            const [startHour, startMinute] = startTime.split(':').map(Number);
-            const [endHour, endMinute] = endTime.split(':').map(Number);
-
-            const startTotalMinutes = startHour * 60 + startMinute;
-            const endTotalMinutes = endHour * 60 + endMinute;
-
-            // Tính toán thời gian (đơn giản, không kiểm tra ngày khác nhau)
-            let durationMinutes = endTotalMinutes - startTotalMinutes;
-
-            if (durationMinutes <= 0) {
-                document.getElementById('calculated-duration').innerText = '0 phút';
-                document.getElementById('calculated-total').innerText = '0 VNĐ';
-                return 0;
-            }
-
-            const durationHours = durationMinutes / 60;
-            const pricePerHour = 100000; // Giá cố định demo
-            const totalPrice = durationHours * pricePerHour;
-
-            document.getElementById('calculated-duration').innerText = `${durationHours} giờ`;
-            document.getElementById('calculated-total').innerText = totalPrice.toLocaleString('vi-VN') + ' VNĐ';
-            return totalPrice;
-        }
-
-        // ---------------------- LOGIC TẠO ĐƠN MỚI ----------------------
-
-        // Mở Modal Tạo Đơn
-        createNewBookingBtn.addEventListener('click', function () {
-            // Reset form (Trong thực tế nên dùng form.reset())
-            document.getElementById('new-customer-name').value = '';
-            document.getElementById('new-phone').value = '';
-
-            // Cập nhật giá trị tính toán ban đầu
-            calculateTotal();
-
-            newModal.style.display = 'flex';
-        });
-
-        // Đóng Modal Tạo Đơn
-        closeNewModalBtn.addEventListener('click', function () {
-            closeModal(newModal);
-        });
-
-        // Gán sự kiện tính toán khi thay đổi giờ
-        document.getElementById('new-start-time').addEventListener('change', calculateTotal);
-        document.getElementById('new-end-time').addEventListener('change', calculateTotal);
-
-        // Xử lý nút Xác nhận Đặt Sân (Demo)
-        document.getElementById('submitNewBookingBtn').addEventListener('click', function () {
-            const total = calculateTotal();
-            if (document.getElementById('new-customer-name').value.trim() === "") {
-                alert("Vui lòng nhập Tên Khách hàng.");
-                return;
-            }
-            alert(`Đã tạo đơn mới cho ${document.getElementById('new-customer-name').value}. Tổng tiền: ${total.toLocaleString('vi-VN')} VNĐ (Demo)`);
-            closeModal(newModal);
-            // THỰC TẾ: GỌI API ĐỂ LƯU ĐƠN VÀ TẢI LẠI LỊCH
-        });
-
-
-        // ---------------------- LOGIC CHỈNH SỬA ĐƠN (Giữ nguyên) ----------------------
-
-        // Hàm mở Modal Chỉnh Sửa và điền dữ liệu (DEMO)
-        function openEditModal(slotElement) {
-            const customerText = slotElement.querySelector('.customer-name').innerText;
-            const statusText = slotElement.querySelector('.status-badge').innerText;
-
-            document.getElementById('edit-customer-name').value = customerText.split(' - ')[1] || customerText;
-            document.getElementById('edit-booking-id').value = customerText.split(' - ')[0];
-
-            const statusMap = { 'Đã cọc': 'confirmed', 'Đã TT': 'paid', 'Chưa TT': 'pending' };
-            document.getElementById('edit-payment-status').value = statusMap[statusText] || 'confirmed';
-
-            editModal.style.display = 'flex';
-        }
-
-        // Gán sự kiện click vào các ô đã đặt
-        const bookedSlots = document.querySelectorAll('.booked-slot');
-        bookedSlots.forEach(slot => {
-            slot.addEventListener('click', function () {
-                openEditModal(this);
-            });
-        });
-
-        // Gán sự kiện đóng Modal Chỉnh Sửa
-        closeEditModalBtn.addEventListener('click', function () {
-            closeModal(editModal);
-        });
-
-        // Đóng Modal khi click ra ngoài overlay (Áp dụng cho cả hai modal)
-        document.querySelectorAll('.modal-overlay').forEach(overlay => {
-            overlay.addEventListener('click', function (e) {
-                if (e.target === overlay) {
-                    closeModal(overlay);
-                }
-            });
-        });
-
-        // Xử lý nút Xóa Đơn (Demo)
-        document.getElementById('deleteBookingBtn').addEventListener('click', function () {
-            if (confirm("Bạn có chắc chắn muốn xóa đơn đặt sân này không?")) {
-                alert("Đơn hàng đã được xóa (Demo)");
-                closeModal(editModal);
-            }
-        });
-
-        // Xử lý nút Lưu Thay Đổi (Demo)
-        document.getElementById('saveBookingBtn').addEventListener('click', function () {
-            alert("Đơn hàng đã được lưu các thay đổi (Demo)");
-            closeModal(editModal);
-        });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-booking.js"></script>
 
 </body>
 
