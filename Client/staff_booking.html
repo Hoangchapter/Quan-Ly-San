@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giao diện Nhân viên - Đặt Sân</title>
-    <link rel="stylesheet" href="style_staff.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Client/css/style_staff.css">
 </head>
 
 <body>
     <div class="staff-wrapper">
 
+        <!-- ====================== HEADER ======================= -->
         <header class="staff-header">
             <div class="header-left">
                 <h2 id="main-title">⚽ Quản lý Đặt Sân</h2>
@@ -24,24 +26,23 @@
                 <span class="user-name" id="userName"></span>
                 <span class="logout-btn" id="logoutBtn">Đăng xuất</span>
             </div>
-
         </header>
 
-
+        <!-- ====================== MAIN CONTENT ======================= -->
         <div class="main-content-staff">
 
+            <!-- ====================== TAB: ĐẶT SÂN ======================= -->
             <div id="booking-content">
                 <div class="controls-bar">
                     <div class="filter-group">
                         <label for="date-select">Ngày:</label>
                         <input type="date" id="date-select" value="2025-11-25">
                     </div>
+
                     <div class="filter-group">
                         <label for="field-filter">Sân:</label>
                         <select id="field-filter">
-                            <option>Tất cả</option>
-                            <option>Sân A</option>
-                            <option>Sân B</option>
+                            <option value="all">Tất cả</option>
                         </select>
                     </div>
 
@@ -50,87 +51,15 @@
 
                 <section class="booking-grid-container card">
                     <h3>Lịch Đặt Sân Hôm Nay</h3>
-
-                    <div class="booking-grid">
+                    <div class="booking-grid" id="bookingGrid">
                         <div class="header-cell">Giờ</div>
-                        <div class="header-cell">Sân A</div>
-                        <div class="header-cell">Sân B</div>
-                        <div class="header-cell">Sân C</div>
-
-
-                        <!-- 15 dòng giờ từ 08 → 22 -->
-                        <!-- Các khung giờ đều 60px -->
-                        <div class="time-slot" style="grid-row: 2;">08:00</div>
-                        <div class="time-slot" style="grid-row: 3;">09:00</div>
-                        <div class="time-slot" style="grid-row: 4;">10:00</div>
-                        <div class="time-slot" style="grid-row: 5;">11:00</div>
-                        <div class="time-slot" style="grid-row: 6;">12:00</div>
-                        <div class="time-slot" style="grid-row: 7;">13:00</div>
-                        <div class="time-slot" style="grid-row: 8;">14:00</div>
-                        <div class="time-slot" style="grid-row: 9;">15:00</div>
-                        <div class="time-slot" style="grid-row: 10;">16:00</div>
-                        <div class="time-slot" style="grid-row: 11;">17:00</div>
-                        <div class="time-slot" style="grid-row: 12;">18:00</div>
-                        <div class="time-slot" style="grid-row: 13;">19:00</div>
-                        <div class="time-slot" style="grid-row: 14;">20:00</div>
-                        <div class="time-slot" style="grid-row: 15;">21:00</div>
-                        <div class="time-slot" style="grid-row: 16;">22:00</div>
-
-                        <div class="grid-cell empty-slot" style="grid-row: 2; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 3; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 4; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 5; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 6; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 7; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 8; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 9; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 10; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 11; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 12; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 13; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 14; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 15; grid-column: 2;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 16; grid-column: 2;"></div>
-
-                        <div class="grid-cell empty-slot" style="grid-row: 2; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 3; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 4; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 5; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 6; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 7; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 8; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 9; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 10; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 11; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 12; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 13; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 14; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 15; grid-column: 3;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 16; grid-column: 3;"></div>
-
-                        <div class="grid-cell empty-slot" style="grid-row: 2; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 3; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 4; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 5; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 6; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 7; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 8; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 9; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 10; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 11; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 12; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 13; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 14; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 15; grid-column: 4;"></div>
-                        <div class="grid-cell empty-slot" style="grid-row: 16; grid-column: 4;"></div>
                     </div>
                 </section>
             </div>
 
-
+            <!-- ====================== TAB: LỊCH CA ======================= -->
             <div id="schedule-content">
                 <div class="controls-bar schedule-controls">
-
                     <div class="filter-group">
                         <label for="start-date-select">Ngày Bắt Đầu:</label>
                         <input type="date" id="start-date-select" value="2025-11-24">
@@ -146,8 +75,8 @@
 
                 <section class="schedule-table-container card">
                     <h3>Lịch Làm Việc Của Bạn</h3>
-                    <div class="schedule-grid personal-schedule-grid">
 
+                    <div class="schedule-grid personal-schedule-grid">
                         <div class="schedule-header-cell employee-col">Ca làm việc</div>
                         <div class="schedule-header-cell day-col">Thứ Hai (24)</div>
                         <div class="schedule-header-cell day-col">Thứ Ba (25)</div>
@@ -157,38 +86,20 @@
                         <div class="schedule-header-cell day-col">Thứ Bảy (29)</div>
                         <div class="schedule-header-cell day-col">Chủ Nhật (30)</div>
 
-                        <div class="shift-cell">
-                            <span class="shift-badge shift-morning">Sáng (8:00 - 12:00)</span>
-                        </div>
-                        <div class="shift-cell">
-                            <span class="shift-badge shift-full">Toàn ca (8:00 - 17:00)</span>
-                        </div>
-                        <div class="shift-cell">
-                            <span class="shift-badge shift-dayoff">Nghỉ</span>
-                        </div>
-                        <div class="shift-cell">
-                            <span class="shift-badge shift-afternoon">Chiều (13:00 - 17:00)</span>
-                        </div>
-                        <div class="shift-cell">
-                            <span class="shift-badge shift-night">Tối (17:00 - 22:00)</span>
-                        </div>
-                        <div class="shift-cell weekend">
-                            <span class="shift-badge shift-full">Toàn ca (8:00 - 17:00)</span>
-                        </div>
-                        <div class="shift-cell weekend">
-                            <span class="shift-badge shift-dayoff">Nghỉ</span>
-                        </div>
-                        <div class="shift-cell weekend">
-                            <span class="shift-badge shift-dayoff">Nghỉ</span>
-                        </div>
-
+                        <div class="shift-cell"><span class="shift-badge shift-morning">Sáng (8:00 - 12:00)</span></div>
+                        <div class="shift-cell"><span class="shift-badge shift-full">Toàn ca (8:00 - 17:00)</span></div>
+                        <div class="shift-cell"><span class="shift-badge shift-dayoff">Nghỉ</span></div>
+                        <div class="shift-cell"><span class="shift-badge shift-afternoon">Chiều (13:00 - 17:00)</span></div>
+                        <div class="shift-cell"><span class="shift-badge shift-night">Tối (17:00 - 22:00)</span></div>
+                        <div class="shift-cell weekend"><span class="shift-badge shift-full">Toàn ca</span></div>
+                        <div class="shift-cell weekend"><span class="shift-badge shift-dayoff">Nghỉ</span></div>
+                        <div class="shift-cell weekend"><span class="shift-badge shift-dayoff">Nghỉ</span></div>
                     </div>
                 </section>
             </div>
 
-
+            <!-- ====================== TAB: THÔNG BÁO ======================= -->
             <div id="notification-content">
-
                 <div class="controls-bar">
                     <h3 style="margin-right: auto;">Danh sách Thông báo</h3>
                     <button class="btn-primary mark-all-read-btn">Đánh dấu đã đọc tất cả</button>
@@ -202,7 +113,7 @@
                             <div class="notification-details">
                                 <p class="notification-title">Đơn đặt sân mới cần xác nhận</p>
                                 <p class="notification-message">
-                                    Khách hàng **Nguyễn Văn A** đã đặt Sân B, từ 19:00 - 20:00, ngày 25/11/2025.
+                                    Khách hàng <b>Nguyễn Văn A</b> đã đặt Sân B, từ 19:00 - 20:00 (25/11/2025).
                                 </p>
                                 <span class="notification-time">5 phút trước</span>
                             </div>
@@ -212,26 +123,13 @@
                         <div class="notification-item unread" data-type="shift">
                             <div class="icon-box shift-change">🔄</div>
                             <div class="notification-details">
-                                <p class="notification-title">Ca làm việc của bạn có thay đổi</p>
+                                <p class="notification-title">Ca làm việc có thay đổi</p>
                                 <p class="notification-message">
-                                    Ca làm việc Thứ Tư (27/11) của bạn đã được chuyển từ **Sáng** sang **Chiều** (13:00
-                                    - 17:00).
+                                    Ca Thứ Tư (27/11) đổi từ <b>Sáng</b> sang <b>Chiều</b>.
                                 </p>
                                 <span class="notification-time">1 giờ trước</span>
                             </div>
                             <button class="mark-read-btn">Đã đọc</button>
-                        </div>
-
-                        <div class="notification-item read" data-type="general">
-                            <div class="icon-box general-info">ℹ️</div>
-                            <div class="notification-details">
-                                <p class="notification-title">Thông báo chung: Cập nhật giá nước</p>
-                                <p class="notification-message">
-                                    Giá bán nước suối tại quầy sẽ tăng 2,000đ kể từ ngày 01/12. Vui lòng thông báo cho
-                                    khách hàng.
-                                </p>
-                                <span class="notification-time">Hôm qua</span>
-                            </div>
                         </div>
 
                     </div>
@@ -239,6 +137,7 @@
             </div>
         </div>
 
+        <!-- ========================= EDIT BOOKING MODAL ========================= -->
         <div id="editBookingModal" class="modal-overlay" style="display: none;">
             <div class="modal-content card">
                 <h3>✏️ Chi tiết Đơn Đặt Sân</h3>
@@ -247,240 +146,180 @@
                     <h4>Thông tin Cơ bản</h4>
                     <div class="form-row">
                         <div class="form-group half-width">
-                            <label>Mã đơn hàng:</label>
-                            <input type="text" id="edit-booking-id" value="KH001" readonly>
+                            <label>Mã đơn:</label>
+                            <input type="text" id="edit-booking-id" readonly>
                         </div>
+
                         <div class="form-group half-width">
                             <label>Khách hàng:</label>
-                            <input type="text" id="edit-customer-name" value="Phạm Đức">
+                            <input type="text" id="edit-customer-name">
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="form-group half-width">
                             <label>Ngày:</label>
-                            <input type="date" id="edit-date" value="2025-11-25">
+                            <input type="date" id="edit-date">
                         </div>
+
                         <div class="form-group half-width">
-                            <label>Sân:</label>
-                            <select id="edit-field">
-                                <option value="A" selected>Sân A</option>
-                                <option value="B">Sân B</option>
-                                <option value="C">Sân C</option>
-                            </select>
+                            <label for="edit-Khu">Khu:</label>
+                            <select id="edit-Khu"></select>
+                        </div>
+
+                        <div class="form-group half-width">
+                            <label for="edit-field">Sân:</label>
+                            <select id="edit-field"></select>
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="form-group half-width">
-                            <label>Thời gian bắt đầu:</label>
-                            <select id="edit-start-time">
-                                <option value="08:00" selected>08:00</option>
-                                <option value="09:00" selected>09:00</option>
-                                <option value="10:00" selected>10:00</option>
-                                <option value="11:00" selected>11:00</option>
-                                <option value="12:00" selected>12:00</option>
-                                <option value="13:00" selected>13:00</option>
-                                <option value="14:00" selected>14:00</option>
-                                <option value="15:00" selected>15:00</option>
-                                <option value="16:00" selected>16:00</option>
-                                <option value="17:00" selected>17:00</option>
-                                <option value="18:00" selected>18:00</option>
-                                <option value="19:00" selected>19:00</option>
-                                <option value="20:00" selected>20:00</option>
-                                <option value="21:00" selected>21:00</option>
-                                <option value="22:00" selected>22:00</option>
-                            </select>
+                            <label>Bắt đầu:</label>
+                            <select id="edit-start-time"></select>
                         </div>
+
                         <div class="form-group half-width">
-                            <label>Thời gian kết thúc:</label>
-                            <select id="edit-end-time">
-                                <option value="08:00" selected>08:00</option>
-                                <option value="09:00" selected>09:00</option>
-                                <option value="10:00" selected>10:00</option>
-                                <option value="11:00" selected>11:00</option>
-                                <option value="12:00" selected>12:00</option>
-                                <option value="13:00" selected>13:00</option>
-                                <option value="14:00" selected>14:00</option>
-                                <option value="15:00" selected>15:00</option>
-                                <option value="16:00" selected>16:00</option>
-                                <option value="17:00" selected>17:00</option>
-                                <option value="18:00" selected>18:00</option>
-                                <option value="19:00" selected>19:00</option>
-                                <option value="20:00" selected>20:00</option>
-                                <option value="21:00" selected>21:00</option>
-                                <option value="22:00" selected>22:00</option>
-                            </select>
+                            <label>Kết thúc:</label>
+                            <select id="edit-end-time"></select>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-section">
-                    <h4>Thanh toán & Trạng thái</h4>
+                    <h4>Thanh toán</h4>
                     <div class="form-row">
-                        <div class="form-group half-width">
-                            <label>Trạng thái thanh toán:</label>
+                        <!-- <div class="form-group half-width">
+                            <label>Trạng thái:</label>
                             <select id="edit-payment-status">
-                                <option value="confirmed" selected>Đã cọc</option>
-                                <option value="paid">Đã thanh toán đủ</option>
                                 <option value="pending">Chưa thanh toán</option>
+                                <option value="confirmed">Đã cọc</option>
+                                <option value="paid">Đã thanh toán đủ</option>
                             </select>
-                        </div>
+                        </div> -->
+
                         <div class="form-group half-width">
                             <label>Giá sân (VNĐ):</label>
-                            <input type="number" id="edit-price" value="200000" readonly>
+                            <input type="number" id="edit-price" readonly>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-actions">
-                    <button class="btn-secondary" id="deleteBookingBtn">🗑️ Xóa Đơn</button>
-                    <button class="btn-primary" id="saveBookingBtn">Lưu Thay Đổi</button>
+                    <button class="btn-secondary" id="deleteBookingBtn">🗑️ Xóa</button>
+                    <button class="btn-primary" id="saveBookingBtn">Lưu</button>
                     <button class="btn-secondary" id="closeEditModalBtn">Đóng</button>
                 </div>
             </div>
         </div>
 
+        <!-- ========================= NEW BOOKING MODAL ========================= -->
         <div id="newBookingModal" class="modal-overlay" style="display: none;">
-            <div class="modal-content card">
-                <h3>✨ Tạo Đơn Đặt Sân Mới</h3>
+    <div class="modal-content card">
+        <h3>✨ Tạo Đơn Đặt Sân Mới</h3>
 
-                <div class="form-section">
-                    <h4>Thông tin Khách hàng</h4>
-                    <div class="form-group">
-                        <label for="new-customer-name">Tên Khách hàng <span class="required">*</span></label>
-                        <input type="text" id="new-customer-name" placeholder="Ví dụ: Nguyễn Văn B">
-                    </div>
-                    <div class="form-group">
-                        <label for="new-phone">Số điện thoại <span class="required">*</span></label>
-                        <input type="tel" id="new-phone" placeholder="Ví dụ: 090xxxxxxx">
-                    </div>
+        <!-- THÔNG TIN KHÁCH -->
+        <div class="form-section">
+            <h4>Thông tin Khách</h4>
+            <div class="form-group">
+                <label for="new-customer-name">Tên khách hàng <span class="required">*</span></label>
+                <input type="text" id="new-customer-name">
+            </div>
+        </div>
+
+        <!-- THỜI GIAN & SÂN -->
+        <div class="form-section">
+            <h4>Thời gian & Sân</h4>
+
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="new-date">Ngày đặt</label>
+                    <input type="date" id="new-date" value="2025-11-25">
                 </div>
 
-                <div class="form-section">
-                    <h4>Thời gian & Sân</h4>
-                    <div class="form-row">
-                        <div class="form-group half-width">
-                            <label for="new-date">Ngày đặt <span class="required">*</span></label>
-                            <input type="date" id="new-date" value="2025-11-25">
-                        </div>
-                        <div class="form-group half-width">
-                            <label for="new-field">Sân <span class="required">*</span></label>
-                            <select id="new-field">
-                                <option value="A">Sân A</option>
-                                <option value="B">Sân B</option>
-                                <option value="C">Sân C</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group half-width">
-                            <label for="new-start-time">Bắt đầu <span class="required">*</span></label>
-                            <select id="new-start-time">
-                                <option value="08:00">08:00</option>
-                                <option value="09:00">09:00</option>
-                                <option value="10:00">10:00</option>
-                                <option value="11:00">11:00</option>
-                                <option value="12:00">12:00</option>
-                                <option value="13:00">13:00</option>
-                                <option value="14:00">14:00</option>
-                                <option value="15:00">15:00</option>
-                                <option value="16:00">16:00</option>
-                                <option value="17:00">17:00</option>
-                                <option value="18:00">18:00</option>
-                                <option value="19:00">19:00</option>
-                                <option value="20:00">20:00</option>
-                                <option value="21:00">21:00</option>
-                                <option value="22:00">22:00</option>
-                            </select>
-                        </div>
-                        <div class="form-group half-width">
-                            <label for="new-end-time">Kết thúc <span class="required">*</span></label>
-                            <select id="new-end-time">
-                                <option value="08:00">08:00</option>
-                                <option value="09:00">09:00</option>
-                                <option value="10:00">10:00</option>
-                                <option value="11:00">11:00</option>
-                                <option value="12:00">12:00</option>
-                                <option value="13:00">13:00</option>
-                                <option value="14:00">14:00</option>
-                                <option value="15:00">15:00</option>
-                                <option value="16:00">16:00</option>
-                                <option value="17:00">17:00</option>
-                                <option value="18:00">18:00</option>
-                                <option value="19:00">19:00</option>
-                                <option value="20:00">20:00</option>
-                                <option value="21:00">21:00</option>
-                                <option value="22:00">22:00</option>
-                            </select>
-                        </div>
-                    </div>
+                <div class="form-group half-width">
+                    <label for="new-Khu">Khu</label>
+                    <select id="new-Khu"></select>
                 </div>
 
-                <div class="form-section">
-                    <h4>Tính toán & Thanh toán</h4>
-                    <div class="calculation-summary">
-                        <p>Tổng thời gian đặt: <span class="value-display" id="calculated-duration">1 giờ</span></p>
-                        <p>Đơn giá/giờ: <span class="value-display" id="price-per-hour">100,000 VNĐ</span></p>
-                        <p>Tổng tiền sân: <span class="value-display" id="calculated-total">100,000 VNĐ</span></p>
-                    </div>
+                <div class="form-group half-width">
+                    <label for="new-field">Sân</label>
+                    <select id="new-field"></select>
+                </div>
+            </div>
 
-                    <div class="form-group" style="margin-top: 15px;">
-                        <label for="new-deposit-amount">Số tiền Khách cọc/TT trước (VNĐ)</label>
-                        <input type="number" id="new-deposit-amount" value="0">
-                    </div>
-                    <div class="form-group">
-                        <label for="new-notes">Ghi chú (Nội bộ)</label>
-                        <textarea id="new-notes" rows="2" placeholder="Yêu cầu đặc biệt, ..."></textarea>
-                    </div>
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="new-start-time">Bắt đầu</label>
+                    <select id="new-start-time"></select>
                 </div>
 
-                <div class="form-actions">
-                    <button class="btn-secondary" id="closeNewModalBtn">Hủy</button>
-                    <button class="btn-primary" id="submitNewBookingBtn">✅ Xác nhận Đặt Sân</button>
+                <div class="form-group half-width">
+                    <label for="new-end-time">Kết thúc</label>
+                    <select id="new-end-time"></select>
                 </div>
             </div>
         </div>
+
+        <!-- TÍNH TOÁN & THANH TOÁN -->
+        <div class="form-section">
+            <h4>Tính toán & Thanh toán</h4>
+            <div class="calculation-summary">
+                <p>Tổng thời gian đặt: <span class="value-display" id="calculated-duration"></span></p>
+                <p>Đơn giá/sân: <span class="value-display" id="price-per-hour"></span></p>
+                <p>Tổng tiền: <span class="value-display" id="calculated-total"></span></p>
+            </div>
+        </div>
+
+        <!-- GHI CHÚ -->
+        <div class="form-section">
+            <h4>Ghi chú</h4>
+            <textarea id="new-notes" rows="2" placeholder="Ghi chú nội bộ..."></textarea>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="form-actions">
+            <button class="btn-secondary" id="closeNewModalBtn">Hủy</button>
+            <button class="btn-primary" id="submitNewBookingBtn">Xác nhận đặt sân</button>
+        </div>
+    </div>
+</div>
+
+
     </div>
 
+    <!-- Menu logic -->
     <script>
-        // ---------------------- LOGIC TAB NAVIGATION ----------------------
         function showContent(contentId, title) {
-            // Ẩn TẤT CẢ nội dung
             document.getElementById('booking-content').style.display = 'none';
             document.getElementById('schedule-content').style.display = 'none';
             document.getElementById('notification-content').style.display = 'none';
 
-            // Hiển thị nội dung được chọn
             document.getElementById(contentId).style.display = 'block';
-
-            // Cập nhật tiêu đề chính
             document.getElementById('main-title').innerText = title;
 
-            // Cập nhật trạng thái active của nav item
-            document.getElementById('nav-booking').classList.remove('active');
-            document.getElementById('nav-schedule').classList.remove('active');
-            document.getElementById('nav-notification').classList.remove('active');
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
             document.querySelector(`[data-content="${contentId}"]`).classList.add('active');
         }
 
-        // Gán sự kiện cho các nav item
-        document.getElementById('nav-booking').addEventListener('click', function () {
+        document.getElementById('nav-booking').onclick = () =>
             showContent('booking-content', '⚽ Quản lý Đặt Sân');
-        });
 
-        document.getElementById('nav-schedule').addEventListener('click', function () {
-            showContent('schedule-content', '🗓️ Lịch Ca Làm Việc');
-        });
+        document.getElementById('nav-schedule').onclick = () =>
+            showContent('schedule-content', '🗓️ Lịch Ca Làm');
 
-        document.getElementById('nav-notification').addEventListener('click', function () {
+        document.getElementById('nav-notification').onclick = () =>
             showContent('notification-content', '🔔 Thông báo');
-        });
 
-        // Thiết lập nội dung mặc định khi load trang
         showContent('booking-content', '⚽ Quản lý Đặt Sân');
-
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase-booking.js"></script>
+
+    <!-- Supabase SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2.39.6/dist/umd/supabase.js"></script>
+
+    <!-- Main JS -->
+    <script src="./js/supabase-booking.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

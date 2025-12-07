@@ -450,8 +450,12 @@ async function handleSaveCourt(e) {
                 .single();
 
             if (newVenueError) {
+<<<<<<< HEAD
                 console.error("Lỗi chi tiết khi tạo Venue:", newVenueError);
                 alert(`❌ Lỗi tạo Khu vực mới: ${newVenueError.message}`);
+=======
+                alert(` Lỗi tạo Khu vực mới: ${newVenueError.message}`);
+>>>>>>> 2057d3429b87f9348801b62297f8f746055d8d72
                 return;
             }
             venueId = newVenue.id;

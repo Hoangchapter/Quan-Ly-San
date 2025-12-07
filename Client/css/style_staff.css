@@ -123,48 +123,52 @@ body {
 /* Mặc định hiển thị */
 
 .booking-grid {
-    display: grid;
-    grid-template-columns: 80px repeat(3, 1fr);
-    grid-template-rows: 50px repeat(15, 50px);
-    border: none;
-    margin-top: 15px;
-    border-radius: 8px;
-    overflow: hidden;
+  display: grid;
+  width: 100%;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
 }
 
 .header-cell {
-    background-color: #e9ecef;
-    padding: 10px 5px;
-    font-weight: 700;
-    text-align: center;
-    border-right: 1px solid var(--border-color);
-    line-height: 30px;
+  background: #f3f4f6;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid #d1d5db;
+  border-bottom: 1px solid #d1d5db;
 }
 
 .time-slot {
-    grid-column: 1;
-    text-align: center;
-    padding: 0 10px 0 0;
-    font-size: 14px;
-    color: var(--secondary-text);
-    border-bottom: 1px solid var(--border-color);
-    position: relative;
-    border-right: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-
-    height: 100%;
-}
-
-.time-slot:nth-child(2) {
-    visibility: hidden;
+  background: #f9fafb;
+  padding: 8px;
+  text-align: center;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
 }
 
 .grid-cell {
-    border-right: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    padding: 0;
-    position: relative;
+  background: white;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 50px;
 }
+.booking-grid {
+  min-height: 800px;
+}
+
+
+.booking-block {
+  z-index: 50;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .empty-slot {
     background-color: var(--surface-color);
@@ -460,4 +464,433 @@ body {
     /* bottom: 0; */ 
     z-index: 10;
     border-top: 1px solid var(--border-color);
+}
+/* ================= BOOTSTRAP COMPAT LAYER ================= */
+
+/* Đồng bộ màu theo Bootstrap */
+:root {
+    --primary-color: #0d6efd;
+    --accent-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --background-color: #f4f6f9;
+    --surface-color: #ffffff;
+}
+
+/* Ngăn Bootstrap phá layout grid của bạn */
+.container, .row, .col, .col-* {
+    all: unset;
+}
+
+/* HEADER */
+.staff-header {
+    background: linear-gradient(135deg, #0d6efd, #084298);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 8px 22px rgba(0,0,0,.18);
+}
+
+.nav-item {
+    padding: 7px 16px;
+    border-radius: 999px;
+    transition: 0.25s;
+}
+
+.nav-item.active {
+    background: white;
+    color: #0d6efd;
+    border-bottom: none;
+}
+
+/* BUTTON */
+.btn-primary {
+    background-color: #0d6efd !important;
+    border-radius: 12px;
+    padding: 10px 18px;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7 !important;
+}
+
+.btn-secondary {
+    background-color: #6c757d !important;
+    border-radius: 12px;
+}
+
+/* INPUT */
+input, select, textarea {
+    border-radius: 10px !important;
+    padding: 10px 12px;
+}
+
+/* CARD */
+.card {
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(0,0,0,.08);
+}
+
+/* BOOKING GRID */
+.booking-grid {
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px #dee2e6;
+    background: #f1f5f9;
+}
+
+.booked-slot {
+    border-radius: 10px;
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
+}
+
+.booked-slot:hover {
+    transform: scale(1.015);
+    box-shadow: 0 0 12px rgba(13,110,253,.35);
+}
+
+/* MODAL */
+.modal-content {
+    border-radius: 22px;
+    animation: bsFade 0.25s ease;
+}
+
+@keyframes bsFade {
+    from {
+        transform: translateY(25px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* NOTIFICATION */
+.notification-item {
+    box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+
+.notification-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,.14);
+}
+
+/* FORM FOOTER */
+.form-actions {
+    background: linear-gradient(180deg, #fff, #f8f9fa);
+}
+/* ================= CREATE BOOKING FORM BEAUTIFY ================= */
+
+#newBookingModal .modal-content {
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    background: linear-gradient(180deg, #ffffff, #f8fafc);
+}
+
+/* Tiêu đề */
+#newBookingModal h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0d6efd;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+/* Nhóm form */
+#newBookingModal .form-section {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 14px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+/* Tiêu đề từng phần */
+#newBookingModal .form-section h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #198754;
+    margin-bottom: 12px;
+}
+
+/* Input layout gọn đẹp */
+#newBookingModal .form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+}
+
+#newBookingModal input,
+#newBookingModal select,
+#newBookingModal textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 10px 12px;
+    font-size: 14px;
+    background: white;
+}
+
+#newBookingModal input:focus,
+#newBookingModal select:focus,
+#newBookingModal textarea:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13,110,253,.25);
+}
+
+/* Hàng 2 cột đều đẹp */
+#newBookingModal .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+/* PHẦN TÍNH TOÁN TIỀN */
+#newBookingModal .calculation-summary {
+    background: linear-gradient(135deg, #e7f1ff, #f8fbff);
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px dashed #0d6efd;
+}
+
+#newBookingModal .calculation-summary p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+}
+
+#newBookingModal .value-display {
+    color: #0d6efd;
+    font-weight: 700;
+}
+
+/* GHI CHÚ */
+#newBookingModal textarea {
+    resize: none;
+    background: #fff;
+}
+
+/* NÚT HÀNH ĐỘNG */
+#newBookingModal .form-actions {
+    margin-top: 18px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+#newBookingModal .btn-primary {
+    padding: 10px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0d6efd, #084298);
+}
+
+#newBookingModal .btn-secondary {
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: #adb5bd;
+}
+/* ================= UPDATE BOOKING FORM BEAUTIFY ================= */
+
+#editBookingModal .modal-content {
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+    background: linear-gradient(180deg, #ffffff, #f1f5f9);
+}
+
+/* TIÊU ĐỀ */
+#editBookingModal h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #dc3545;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* CÁC KHỐI FORM */
+#editBookingModal .form-section {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 14px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+/* TIÊU ĐỀ TỪNG KHỐI */
+#editBookingModal .form-section h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0d6efd;
+    margin-bottom: 12px;
+}
+
+/* LABEL & INPUT */
+#editBookingModal .form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+}
+
+#editBookingModal input,
+#editBookingModal select {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 10px 12px;
+    font-size: 14px;
+    background: white;
+}
+
+#editBookingModal input:focus,
+#editBookingModal select:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220,53,69,.25);
+}
+
+/* LAYOUT 2 CỘT ĐỀU NHAU */
+#editBookingModal .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+/* Ô MÃ ĐƠN READONLY */
+#edit-booking-id {
+    background: #e9ecef;
+    font-weight: 700;
+    color: #6c757d;
+}
+
+/* PHẦN THANH TOÁN */
+#editBookingModal .form-section:last-of-type {
+    background: linear-gradient(135deg, #fff3cd, #fff8e1);
+    border: 1px dashed #ffc107;
+}
+
+/* GIÁ SÂN */
+#edit-price {
+    background: #fff;
+    font-weight: 800;
+    color: #dc3545;
+    text-align: right;
+}
+
+/* NÚT HÀNH ĐỘNG */
+#editBookingModal .form-actions {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* NÚT XÓA */
+#deleteBookingBtn {
+    background: linear-gradient(135deg, #dc3545, #a71d2a);
+    color: white;
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-weight: 700;
+}
+
+#deleteBookingBtn:hover {
+    background: #a71d2a;
+}
+
+/* NÚT LƯU */
+#saveBookingBtn {
+    background: linear-gradient(135deg, #0d6efd, #084298);
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: 700;
+}
+
+/* NÚT ĐÓNG */
+#closeEditModalBtn {
+    background: #adb5bd;
+    border-radius: 12px;
+    padding: 10px 18px;
+}
+
+/* HIỆU ỨNG NÚT */
+#editBookingModal button {
+    transition: 0.25s;
+}
+
+#editBookingModal button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,.2);
+}
+.booking-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px; /* chữ to hơn */
+    font-weight: 700;
+    color: #fff;
+    background: #28a745; /* màu xanh chính */
+    padding: 10px 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* shadow đậm hơn */
+    border: 2px solid #1e7e34; /* viền đậm hơn */
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+}
+
+.booking-block:hover {
+    background: #218838; /* xanh đậm khi hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+.booking-block .customer-name {
+    font-size: 16px; /* chữ khách to hơn */
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.booking-block .status-badge {
+    font-size: 15px; /* chữ trạng thái to hơn */
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+.profile-info .logout-btn {
+    margin-left: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: #dc3545; /* màu đỏ nổi bật */
+    color: #fff;
+    border: 2px solid #c82333; /* viền đậm hơn */
+    transition: all 0.2s ease-in-out;
+}
+
+.profile-info .logout-btn:hover {
+    background-color: #c82333; /* đỏ đậm khi hover */
+    border-color: #a71d2a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-info .logout-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
