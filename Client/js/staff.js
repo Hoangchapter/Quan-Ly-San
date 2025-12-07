@@ -111,21 +111,21 @@ async function showDetailCard(mode = 'add', id = null) {
 
     if (isAddingNew) {
         // Chế độ THÊM MỚI
-        titleElement.textContent = '➕ Thêm Tài Khoản Nhân Viên Mới';
+        titleElement.textContent = ' Thêm Tài Khoản Nhân Viên Mới';
         saveStaffButton.textContent = 'Tạo Tài Khoản';
         passwordInput.required = true; // Bắt buộc nhập khi Thêm mới
         passwordInput.placeholder = 'Nhập mật khẩu (ít nhất 6 ký tự)';
 
     } else {
         // Chế độ CẬP NHẬT
-        titleElement.textContent = '✏️ Cập Nhật Chi Tiết Nhân Viên';
+        titleElement.textContent = ' Cập Nhật Chi Tiết Nhân Viên';
         saveStaffButton.textContent = 'Lưu Cập Nhật';
         
 
         // 1. Tải dữ liệu
         const { data: staff, error } = await supabaseClient
             .from('super_users')
-            // 🛑 PHẢI SELECT CỘT 'password' để lưu tạm 🛑
+            //  PHẢI SELECT CỘT 'password' để lưu tạm 
             .select(`id, username, email, role, password`) 
             .eq('id', id)
             .single();
@@ -196,7 +196,7 @@ async function handleSaveStaff(event) {
             .from('super_users')
             .insert([dataToSubmit]);
 
-        result = { error, successMessage: "✅ Tạo tài khoản nhân viên thành công!" };
+        result = { error, successMessage: " Tạo tài khoản nhân viên thành công!" };
 
     } else {
         // --- LOGIC CẬP NHẬT (UPDATE) ---
@@ -222,7 +222,7 @@ async function handleSaveStaff(event) {
             .update(dataToSubmit)
             .eq('id', currentStaffId);
 
-        result = { error, successMessage: "✅ Cập nhật nhân viên thành công!" };
+        result = { error, successMessage: " Cập nhật nhân viên thành công!" };
     }
     
     // XỬ LÝ KẾT QUẢ
@@ -259,7 +259,7 @@ async function handleDeleteStaff(staffId) {
         return;
     }
     
-    alert("✅ Xóa/Vô hiệu hóa nhân viên thành công!");
+    alert(" Xóa/Vô hiệu hóa nhân viên thành công!");
     await fetchStaffList();
 }
 

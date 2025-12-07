@@ -12,7 +12,7 @@ function displayMessage(text) {
 }
 
 // ---------------------------------------------------------
-// 🔥 HÀM ĐĂNG KÝ (Sign Up) - ĐÃ SỬA THEO YÊU CẦU CỦA BẠN
+//  HÀM ĐĂNG KÝ (Sign Up) - ĐÃ SỬA THEO YÊU CẦU CỦA BẠN
 // (CÓ LƯU MẬT KHẨU PLAIN TEXT VÀO super_users)
 // ---------------------------------------------------------
 async function staffSignUp(fullName, email, password) {
@@ -29,7 +29,7 @@ async function staffSignUp(fullName, email, password) {
     });
 
     if (authError) {
-        alert(`❌ Lỗi đăng ký: ${authError.message}`);
+        alert(` Lỗi đăng ký: ${authError.message}`);
         return;
     }
 
@@ -38,7 +38,7 @@ async function staffSignUp(fullName, email, password) {
     displayMessage("⏳ Đang gán hồ sơ super_users...");
 
     // 3. Chèn role employee VÀ MẬT KHẨU (PLAIN TEXT) vào bảng super_users
-    // 🛑 CẢNH BÁO: Đây là bước bạn yêu cầu, nó tạo ra rủi ro bảo mật nghiêm trọng.
+    
     const { error: profileError } = await supabaseClient
         .from('super_users')
         .insert([{ 
@@ -46,23 +46,23 @@ async function staffSignUp(fullName, email, password) {
             id: newUserId, 
             role: 'employee', 
             email: email, 
-            password: password // 🛑 LƯU MẬT KHẨU PLAIN TEXT! 
+            password: password //  LƯU MẬT KHẨU PLAIN TEXT! 
         }]); 
 
     if (profileError) {
-        alert(`❌ Lỗi gán role: ${profileError.message}.`);
+        alert(` Lỗi gán role: ${profileError.message}.`);
         await supabaseClient.auth.signOut();
         return;
     }
 
     // THÀNH CÔNG
-    alert('✅ Đăng ký thành công! Bạn đã được gán role Employee.'); 
+    alert(' Đăng ký thành công! Bạn đã được gán role Employee.'); 
     window.location.href = 'staff_booking.html';
 }
 
 
 // ---------------------------------------------------------
-// 🔥 XỬ LÝ SUBMIT FORM - GIỮ NGUYÊN
+//  XỬ LÝ SUBMIT FORM - GIỮ NGUYÊN
 // ---------------------------------------------------------
 registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -77,7 +77,7 @@ registerForm.addEventListener("submit", async (e) => {
 });
 
 // ---------------------------------------------------------
-// 🔥 XỬ LÝ SUBMIT FORM - ĐỨNG RIÊNG (ngoài hàm staffSignUp)
+//  XỬ LÝ SUBMIT FORM - ĐỨNG RIÊNG (ngoài hàm staffSignUp)
 // ---------------------------------------------------------
 registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -88,6 +88,6 @@ registerForm.addEventListener("submit", async (e) => {
 
     displayMessage("⏳ Đang xử lý đăng ký...");
 
-    // 🔥 SỬA LỖI LOGIC: Gọi hàm với đúng thứ tự tham số
+    // SỬA LỖI LOGIC: Gọi hàm với đúng thứ tự tham số
     await staffSignUp(fullName, email, password); 
 });

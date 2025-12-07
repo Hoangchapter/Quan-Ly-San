@@ -67,3 +67,145 @@
         margin-top: 10px;
     }
 }
+/* ===========================
+   Quick fixes để tránh chồng lấn
+   =========================== */
+
+/* 1) Đảm bảo main content không bị sidebar che khi viewport nhỏ */
+.main-content-area {
+    box-sizing: border-box;
+    min-height: 100vh;
+    /* đảm bảo không bị kéo ra ngoài khi sidebar cố định */
+    max-width: calc(100% - 280px);
+    /* nếu cần overflow nội dung thì cuộn trong vùng chính */
+    overflow: auto;
+}
+
+/* Khi màn hình nhỏ (mobile/tablet) cho main lấy full width */
+@media (max-width: 992px) {
+    .main-content-area {
+        max-width: 100%;
+        margin-left: 0 !important;
+    }
+}
+
+/* 2) Sidebar cần z-index thấp hơn header nội dung nếu có chồng lấp (nhưng vẫn trên body) */
+.sidebar {
+    z-index: 1000; /* giữ cố định */
+}
+
+/* đảm bảo top header và avatar hiện trên cùng nội dung chính nếu cần */
+.top-header {
+    position: relative;
+    z-index: 1010;
+}
+
+/* avatar hiện rõ, không bị che */
+.profile-avatar {
+    z-index: 1020;
+}
+
+/* 3) Filter controls: tránh bị ép và chồng lên nhau */
+.filter-controls {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    flex-wrap: wrap;          /* QUAN TRỌNG: cho phép xuống dòng nếu thiếu ngang */
+}
+
+/* mỗi nhóm filter có min-width để không bị co quá nhỏ */
+.filter-controls .filter-group {
+    min-width: 180px;
+    flex: 1 1 180px;
+}
+
+/* nút hành động không bị chèn lên selects */
+.filter-controls .action-btn {
+    flex: 0 0 auto;
+    margin-left: 8px;
+}
+
+/* 4) KPI grid linh hoạt hơn, không bị bung/chéo */
+.kpi-container {
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+}
+
+/* Trường hợp màn hình nhỏ: giảm cột */
+@media (max-width: 992px) {
+    .kpi-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+/* 5) Cards/table có khoảng cách rõ ràng, tránh chạm nhau */
+.card {
+    margin-bottom: 20px;
+}
+
+/* table: giữ khoảng cách giữa các hàng nhưng tránh overflow */
+.table-responsive {
+    overflow: auto;
+}
+
+/* table tối ưu cho mobile: tránh nội dung bị đè */
+.data-table td, .data-table th {
+    white-space: nowrap;
+}
+
+/* 6) Độ tương phản tiêu đề, tránh chữ trắng bị "mất" khi background có ảnh */
+.page-title h1,
+.page-title p {
+    color: white; /* chuyển từ trắng sang màu văn bản chung, an toàn hơn trên background ảnh */
+}
+/* ================================
+   FIX LỆCH DÒNG – LỆCH TIÊU ĐỀ
+   ================================ */
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* QUAN TRỌNG: giữ cột đều nhau */
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 10px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid #e0e0e0;
+    white-space: nowrap; /* tránh xuống dòng bậy */
+    overflow: hidden;    /* tránh phình cột */
+    text-overflow: ellipsis;
+}
+
+/* sửa TH/TD không bao giờ được flex */
+.data-table th,
+.data-table td {
+    display: table-cell !important;
+}
+
+/* Responsive: cho phép scroll ngang nếu không đủ chỗ */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+.hidden {
+    display: none !important;     /* ép ẩn dù phần tử đang flex/block */
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+
+/* 7) Nếu vẫn thấy phần header bị che bởi sidebar khi scroll,
+   thêm padding-top cho main-content-area bằng chiều cao header (nếu header cố định) */
+/* .main-content-area { padding-top: 70px; }  <-- bật nếu bạn làm header fixed */

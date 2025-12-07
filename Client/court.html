@@ -83,7 +83,7 @@
 
                 <section class="card field-list-card">
                     <h3>Danh sách các Sân</h3>
-                    <button class="add-button" id="add-court-button">➕ Thêm Sân Mới</button>
+                    <button class="add-button" id="add-court-button"> Thêm Sân Mới</button>
 
                     <div class="table-responsive">
                         <table class="data-table field-table" id="courts-list-table">
@@ -120,7 +120,7 @@
 
                     <fieldset id="venue-details-fieldset" disabled>
                         <legend>Chi tiết Khu Vực (Venue)</legend>
-
+                    
                         <div class="form-group">
                             <label for="venue-name">Tên Khu Vực:</label>
                             <input type="text" id="venue-name" placeholder="Ví dụ: Khu vực Phú Thọ">
@@ -160,15 +160,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="venue-images-url-hidden">URL Ảnh Khu Vực:</label>
-                            <div class="input-group-with-clear">
-                                <input type="text" id="venue-images-url-hidden"
-                                    placeholder="Dán URL ảnh Khu vực tại đây (ngăn cách bằng dấu phẩy)">
-                                <button type="button" id="clear-venue-image-btn" style="display: none;">Xóa Ảnh</button>
-                            </div>
+                            <label for="venue-image-upload">Upload Ảnh Khu Vực:</label>
+                            <input type="file" id="venue-image-upload" accept="image/*" multiple>
                             <div id="venue-images-preview" class="image-preview"></div>
                         </div>
                     </fieldset>
+                    <button type="button" id="edit-venue-details-btn">
+                            Sửa chi tiết Venue
+                        </button>
 
                     <fieldset id="court-details-fieldset">
                         <legend>Chi tiết Sân (Court)</legend>
@@ -200,26 +199,30 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="court-image-url-hidden">URL Ảnh Sân:</label>
-                            <input type="text" id="court-image-url-hidden" placeholder="Dán URL ảnh sân tại đây">
+                            <label for="court-image-upload">Upload Ảnh Sân:</label>
+                            <input type="file" id="court-image-upload" accept="image/*">
                             <div id="court-image-preview" class="image-preview"></div>
                         </div>
 
                     </fieldset>
 
-                    <button class="save-button" id="save-court-details-btn">➕ Tạo Sân</button>
+                    <button class="save-button" id="save-court-details-btn"> Tạo Sân</button>
                 </section>
             </div>
         </div>
     </div>
+    <link rel="stylesheet" href="/Client/css/style_base.css">
+    <link rel="stylesheet" href="/Client/css/style_courts.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="/Client/js/client_config.js"></script>
-    <script src="/Client/js/court.js"></script>
+    <script src="/Client/js/court_utils.js"></script>
+    <script src="/Client/js/venues_logic.js"></script>
+    <script src="/Client/js/courts_logic.js"></script>
+    <script src="/Client/js/court_main.js"></script>
     <script src="/Client/js/loadSliderBar.js"></script>
     <!-- <link rel="stylesheet" href="style.css">  -->
-    <link rel="stylesheet" href="/Client/css/style_base.css"> 
-    <link rel="stylesheet" href="/Client/css/style_courts.css"> 
-    
+
+
 
 </body>
 

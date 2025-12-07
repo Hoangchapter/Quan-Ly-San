@@ -22,7 +22,7 @@ async function fetchStaffList() {
 
     if (error) {
         console.error("Lỗi khi tải danh sách nhân viên:", error.message);
-        document.getElementById('admin-message').textContent = `❌ Lỗi tải dữ liệu: ${error.message}`;
+        document.getElementById('admin-message').textContent = ` Lỗi tải dữ liệu: ${error.message}`;
         document.getElementById('admin-message').style.color = 'red';
         return;
     }
@@ -114,7 +114,7 @@ const addStaffForm = document.getElementById('add-staff-form');
 //     });
 
 //     if (authError) {
-//         adminMessageElement.textContent = `❌ Lỗi tạo tài khoản: ${authError.message}`;
+//         adminMessageElement.textContent = ` Lỗi tạo tài khoản: ${authError.message}`;
 //         adminMessageElement.style.color = 'red';
 //         return;
 //     }
@@ -122,7 +122,7 @@ const addStaffForm = document.getElementById('add-staff-form');
 //     const newUserId = authData.user.id;
 
 //     // 2. CHÈN VAI TRÒ VÀO BẢNG super_users (Sử dụng RLS INSERT Admin)
-//     // 🔥 SỬA: Bổ sung 3 trường NOT NULL (full_name, email, username)
+//     //  SỬA: Bổ sung 3 trường NOT NULL (full_name, email, username)
 //     const { error: profileError } = await supabaseClient
 //         .from('super_users') 
 //         .insert([{ 
@@ -134,19 +134,19 @@ const addStaffForm = document.getElementById('add-staff-form');
 //         }]);
 
 //     if (profileError) {
-//         adminMessageElement.textContent = `❌ Lỗi gán Role: ${profileError.message}. Kiểm tra RLS INSERT cho Admin.`;
+//         adminMessageElement.textContent = ` Lỗi gán Role: ${profileError.message}. Kiểm tra RLS INSERT cho Admin.`;
 //         adminMessageElement.style.color = 'red';
 //         // (Trong môi trường thực tế, nên xóa tài khoản Auth nếu gán role thất bại)
 //         return;
 //     }
 
 //     // THÀNH CÔNG
-//     adminMessageElement.textContent = `✅ Tạo tài khoản ${email} (${role}) thành công!`;
+//     adminMessageElement.textContent = ` Tạo tài khoản ${email} (${role}) thành công!`;
 //     adminMessageElement.style.color = 'green';
 
 //     addStaffForm.reset();
 
-//     // 🔥 GỌI HÀM LÀM MỚI DANH SÁCH
+//     //  GỌI HÀM LÀM MỚI DANH SÁCH
 //     fetchStaffList(); 
 // }
 
@@ -166,7 +166,7 @@ async function loadEmployeeDetails(employeeId) {
         .single();
 
     if (error) {
-        adminMessageElement.textContent = `❌ Lỗi tải chi tiết: ${error.message}`;
+        adminMessageElement.textContent = ` Lỗi tải chi tiết: ${error.message}`;
         adminMessageElement.style.color = 'red';
         console.error('Lỗi khi tải chi tiết nhân viên:', error);
         return;
@@ -202,14 +202,14 @@ async function handleDeleteEmployee(employeeId) {
         // GỌI HÀM XÓA ĐÃ ĐỊNH NGHĨA
         await deleteEmployee(employeeId);
 
-        adminMessageElement.textContent = `✅ Xóa nhân viên ID ${employeeId.substring(0, 8)}... thành công!`;
+        adminMessageElement.textContent = ` Xóa nhân viên ID ${employeeId.substring(0, 8)}... thành công!`;
         adminMessageElement.style.color = 'green';
 
         // Làm mới danh sách
         fetchStaffList();
 
     } catch (e) {
-        adminMessageElement.textContent = `❌ Lỗi xóa: ${e.message}`;
+        adminMessageElement.textContent = ` Lỗi xóa: ${e.message}`;
         adminMessageElement.style.color = 'red';
     }
 }
@@ -221,7 +221,7 @@ async function handleUpdateStaff(e) {
     const employeeId = editForm.dataset.employeeId;
 
     if (!employeeId) {
-        adminMessageElement.textContent = '❌ Lỗi: Không tìm thấy ID nhân viên để cập nhật.';
+        adminMessageElement.textContent = ' Lỗi: Không tìm thấy ID nhân viên để cập nhật.';
         adminMessageElement.style.color = 'red';
         return;
     }
@@ -242,14 +242,14 @@ async function handleUpdateStaff(e) {
         // GỌI HÀM CẬP NHẬT ĐÃ ĐỊNH NGHĨA Ở DƯỚI DOMContentLoaded
         await updateEmployee(employeeId, updates);
 
-        adminMessageElement.textContent = `✅ Cập nhật nhân viên ID ${employeeId.substring(0, 8)}... thành công!`;
+        adminMessageElement.textContent = ` Cập nhật nhân viên ID ${employeeId.substring(0, 8)}... thành công!`;
         adminMessageElement.style.color = 'green';
 
         // Làm mới danh sách
         fetchStaffList();
 
     } catch (e) {
-        adminMessageElement.textContent = `❌ Lỗi cập nhật: ${e.message}`;
+        adminMessageElement.textContent = ` Lỗi cập nhật: ${e.message}`;
         adminMessageElement.style.color = 'red';
     }
 }
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //     }
     // });
     // ------------------------------------------------------------------
-    const editForm = document.getElementById('edit-form'); // 🔥 Giả sử Form Sửa có ID là 'edit-form'
+    const editForm = document.getElementById('edit-form'); //  Giả sử Form Sửa có ID là 'edit-form'
     // 3. Thiết lập sự kiện cho các nút 'Sửa' và 'xóa'
     const staffListTable = document.getElementById('staff-list-table');
     if (staffListTable) {
@@ -325,10 +325,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (addStaffCard) { addStaffCard.style.display = 'none'; }
                 if (staffDetailCard) { staffDetailCard.style.display = 'block'; }
 
-                // 🔥 GỌI HÀM TẢI DỮ LIỆU
+                //  GỌI HÀM TẢI DỮ LIỆU
                 loadEmployeeDetails(employeeId);
             } else if (target.classList.contains('delete-btn')) {
-                // 🔥 GỌI HÀM XỬ LÝ XÓA
+                //  GỌI HÀM XỬ LÝ XÓA
                 handleDeleteEmployee(employeeId);
             }
         });
@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Thiết lập sự kiện cho Form Sửa
     if (editForm) {
-        editForm.addEventListener('submit', handleUpdateStaff); // 🔥 GỌI HÀM XỬ LÝ CẬP NHẬT
+        editForm.addEventListener('submit', handleUpdateStaff); //  GỌI HÀM XỬ LÝ CẬP NHẬT
     }
 
     // 4. Xử lý Form Thêm Tài khoản

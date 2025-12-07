@@ -153,3 +153,7 @@
         color: #555;
     }
 }
+#edit-venue-details-btn {
+    position: relative;
+    z-index: 100; /* Đảm bảo nút này nằm trên cùng */
+}

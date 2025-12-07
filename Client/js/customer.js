@@ -132,8 +132,8 @@ async function showDetailCard(mode = 'add', id = null) {
     // Đã xóa: document.getElementById('customer-total-spent').value = '0';
     // Đã xóa: document.getElementById('customer-rank').value = 'normal';
     
-    document.querySelector('#customer-edit-card h3').textContent = isAddingNew ? '➕ Thêm Khách Hàng Mới' : '📝 Chi Tiết Khách Hàng';
-    saveButton.textContent = isAddingNew ? '💾 Tạo Khách Hàng' : '💾 Lưu Cập Nhật';
+    document.querySelector('#customer-edit-card h3').textContent = isAddingNew ? ' Thêm Khách Hàng Mới' : '📝 Chi Tiết Khách Hàng';
+    saveButton.textContent = isAddingNew ? ' Tạo Khách Hàng' : ' Lưu Cập Nhật';
     
     // HIỆN THẺ CHI TIẾT và kích hoạt layout 2 cột
     customerEditCard.style.display = 'block';
