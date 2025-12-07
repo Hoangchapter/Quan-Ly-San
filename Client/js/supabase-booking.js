@@ -5,7 +5,7 @@
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("🚀 JS START LOADING...");
+  console.log(" JS START LOADING...");
   const SUPABASE_URL = "https://hsepwjxuiclhtkfroanq.supabase.co";
   const SUPABASE_ANON_KEY =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhzZXB3anh1aWNsaHRrZnJvYW5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM1ODQyODUsImV4cCI6MjA3OTE2MDI4NX0.rPQ0BP0xJr0IgesIykXclwFUnJ151kBjWgE4rL4F4ro";
@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   let supabase;
   try {
     supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    console.log("✅ Supabase initialized");
+    console.log(" Supabase initialized");
   } catch (err) {
-    console.error("❌ Cannot initialize Supabase:", err);
+    console.error(" Cannot initialize Supabase:", err);
     return;
   }
 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let bookings = [];
   let currentCourtId = null;
   let editingBooking = null;
-  let isLoadingBookings = false;   // ✅ FIX LỖI TẠI ĐÂY
+  let isLoadingBookings = false;   //  FIX LỖI TẠI ĐÂY
   // ------------ HELPERS --------------
   const toISOWithTZ = (d, t) => `${d}T${t}:00${TZ_SUFFIX}`;
   const toRange = (s, e) => `[${s},${e})`;
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const startRow = baseRow + (startHour - gridStartHour);
 
-    // ✅ +1 ô theo quy ước của bạn
+    //  +1 ô theo quy ước của bạn
     let span = (endHour - startHour) + 1;
 
     // Nếu kết thúc đúng :00 thì vẫn tính +1 ô
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // ------------ LOAD BOOKINGS --------------
   async function loadBookingsForDateAndCourt(dateStr, courtId = null) {
-    if (isLoadingBookings) return;   // ✅ CHỐNG LOAD TRÙNG
+    if (isLoadingBookings) return;   //  CHỐNG LOAD TRÙNG
     isLoadingBookings = true;
 
     const dayStart = `${dateStr}T00:00:00+07:00`;
@@ -248,12 +248,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     isLoadingBookings = false;
 
     if (error) {
-      console.error("❌ LOAD BOOKINGS ERROR:", error);
+      console.error(" LOAD BOOKINGS ERROR:", error);
       return;
     }
 
     bookings = data || [];
-    console.log("✅ BOOKINGS LOADED:", bookings.length);
+    console.log(" BOOKINGS LOADED:", bookings.length);
     renderBookingGrid();
   }
 
@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // =====================================================
-  // ⭐⭐ NEW: AUTO CALC PAYMENT ⭐⭐
+  // NEW: AUTO CALC PAYMENT
   // =====================================================
 
   function updateNewBookingPrice() {
@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // SAVE EDIT
   // =====================================================
   // ===============================
-  // ✅ AUTO UPDATE GIÁ KHI ĐANG SỬA
+  //  AUTO UPDATE GIÁ KHI ĐANG SỬA
   // ===============================
   [editStart, editEnd, editField].forEach(el => {
     el.addEventListener("change", () => {
@@ -439,7 +439,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // ===============================
-  // ✅ SAVE EDITED BOOKING (TỰ TÍNH GIÁ)
+  //  SAVE EDITED BOOKING (TỰ TÍNH GIÁ)
   // ===============================
   async function saveEditedBooking() {
     if (!editingBooking) return;
@@ -459,7 +459,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (await checkConflict(courtId, startISO, endISO, id))
       return alert("Khung giờ đã có người đặt!");
 
-    // ✅ TÍNH GIÁ THEO GIỜ CỦA SÂN
+    //  TÍNH GIÁ THEO GIỜ CỦA SÂN
     const court = courts.find(c => c.id === courtId);
     const pricePerHour = court?.default_price_per_hour || 0;
 
@@ -468,7 +468,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const totalPrice = Math.round(totalHours * pricePerHour);
 
-    // ✅ UPDATE DATABASE
+    //  UPDATE DATABASE
     const { error } = await supabase
       .from("bookings")
       .update({
@@ -485,7 +485,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (error) return alert("Lỗi lưu: " + error.message);
 
-    // ✅ Cập nhật lại ô giá trên form sau khi lưu
+    //  Cập nhật lại ô giá trên form sau khi lưu
     editPriceInput.value = totalPrice; // chỉ ghi số thô
 
     editModal.style.display = "none";
@@ -509,7 +509,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // =====================================================
-  // ⭐⭐ CREATE NEW BOOKING WITH PAYMENT ⭐⭐
+  //  CREATE NEW BOOKING WITH PAYMENT 
   // =====================================================
 
   async function createNewBooking() {
@@ -561,7 +561,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (createBtn) createBtn.addEventListener("click", () => {
     const today = new Date().toISOString().slice(0, 10);
-    newDate.value = today; // ✅ LUÔN LẤY NGÀY HIỆN TẠI
+    newDate.value = today; //  LUÔN LẤY NGÀY HIỆN TẠI
     newModal.style.display = "flex";
   });
 
@@ -576,7 +576,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   saveBookingBtn.addEventListener("click", saveEditedBooking);
   deleteBookingBtn.addEventListener("click", deleteBooking);
 
-  // ⭐ NEW AUTO-CALC EVENTS
+  //  NEW AUTO-CALC EVENTS
   newStart.addEventListener("change", updateNewBookingPrice);
   newEnd.addEventListener("change", updateNewBookingPrice);
   newField.addEventListener("change", updateNewBookingPrice);
@@ -599,11 +599,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadCourts();
   const today = new Date().toISOString().slice(0, 10);
   dateSelect.value = today;
-  newDate.value = today; // ✅ TỰ ĐỘNG SET NGÀY TẠO ĐƠN LÀ HÔM NAY
+  newDate.value = today; //  TỰ ĐỘNG SET NGÀY TẠO ĐƠN LÀ HÔM NAY
   await loadBookingsForDateAndCourt(today, null);
 
 
-  console.log("✅ FULL INITIAL LOAD COMPLETE");
+  console.log(" FULL INITIAL LOAD COMPLETE");
 
 
   /* ============================
@@ -617,11 +617,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       const { error } = await supabase.auth.signOut();
 
       if (error) {
-        console.error("❌ Logout error:", error);
+        console.error(" Logout error:", error);
         return;
       }
 
-      console.log("✅ Logged out");
+      console.log(" Logged out");
 
       window.location.href = "login.html";
     });

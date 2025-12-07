@@ -15,7 +15,7 @@
         <!-- ====================== HEADER ======================= -->
         <header class="staff-header">
             <div class="header-left">
-                <h2 id="main-title">⚽ Quản lý Đặt Sân</h2>
+                <h2 id="main-title"> Quản lý Đặt Sân</h2>
             </div>
             <nav class="staff-nav">
                 <a id="nav-booking" class="nav-item active" data-content="booking-content">Đặt Sân</a>
@@ -46,7 +46,7 @@
                         </select>
                     </div>
 
-                    <button class="btn-primary create-btn">➕ Tạo Đơn Mới</button>
+                    <button class="btn-primary create-btn"> Tạo Đơn Mới</button>
                 </div>
 
                 <section class="booking-grid-container card">
@@ -109,7 +109,7 @@
                     <div class="notification-list">
 
                         <div class="notification-item unread" data-type="booking">
-                            <div class="icon-box new-booking">🔔</div>
+                            <div class="icon-box new-booking"></div>
                             <div class="notification-details">
                                 <p class="notification-title">Đơn đặt sân mới cần xác nhận</p>
                                 <p class="notification-message">
@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="notification-item unread" data-type="shift">
-                            <div class="icon-box shift-change">🔄</div>
+                            <div class="icon-box shift-change"></div>
                             <div class="notification-details">
                                 <p class="notification-title">Ca làm việc có thay đổi</p>
                                 <p class="notification-message">
@@ -140,7 +140,7 @@
         <!-- ========================= EDIT BOOKING MODAL ========================= -->
         <div id="editBookingModal" class="modal-overlay" style="display: none;">
             <div class="modal-content card">
-                <h3>✏️ Chi tiết Đơn Đặt Sân</h3>
+                <h3> Chi tiết Đơn Đặt Sân</h3>
 
                 <div class="form-section">
                     <h4>Thông tin Cơ bản</h4>
@@ -206,7 +206,7 @@
                 </div>
 
                 <div class="form-actions">
-                    <button class="btn-secondary" id="deleteBookingBtn">🗑️ Xóa</button>
+                    <button class="btn-secondary" id="deleteBookingBtn"> Xóa</button>
                     <button class="btn-primary" id="saveBookingBtn">Lưu</button>
                     <button class="btn-secondary" id="closeEditModalBtn">Đóng</button>
                 </div>
@@ -216,7 +216,7 @@
         <!-- ========================= NEW BOOKING MODAL ========================= -->
         <div id="newBookingModal" class="modal-overlay" style="display: none;">
     <div class="modal-content card">
-        <h3>✨ Tạo Đơn Đặt Sân Mới</h3>
+        <h3> Tạo Đơn Đặt Sân Mới</h3>
 
         <!-- THÔNG TIN KHÁCH -->
         <div class="form-section">
@@ -303,15 +303,15 @@
         }
 
         document.getElementById('nav-booking').onclick = () =>
-            showContent('booking-content', '⚽ Quản lý Đặt Sân');
+            showContent('booking-content', ' Quản lý Đặt Sân');
 
         document.getElementById('nav-schedule').onclick = () =>
-            showContent('schedule-content', '🗓️ Lịch Ca Làm');
+            showContent('schedule-content', ' Lịch Ca Làm');
 
         document.getElementById('nav-notification').onclick = () =>
-            showContent('notification-content', '🔔 Thông báo');
+            showContent('notification-content', ' Thông báo');
 
-        showContent('booking-content', '⚽ Quản lý Đặt Sân');
+        showContent('booking-content', ' Quản lý Đặt Sân');
     </script>
 
     <!-- Supabase SDK -->
