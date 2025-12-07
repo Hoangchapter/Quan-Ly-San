@@ -24,17 +24,17 @@ async function handleSaveCourt(e) {
         // --- Lấy dữ liệu Venue từ form ---
         const venueFieldset = document.getElementById('venue-details-fieldset');
         // Kiểm tra trạng thái: true nếu các input đang được bật (disabled=false)
-        const isVenueFieldsEnabled = !document.getElementById('venue-name').disabled; 
-        
+        const isVenueFieldsEnabled = !document.getElementById('venue-name').disabled;
+
         const venueUpdates = {
-             name: document.getElementById('venue-name').value.trim(),
-             address: document.getElementById('venue-address').value.trim(),
-             surface: document.getElementById('venue-surface').value.trim(),
-             is_indoor: document.getElementById('venue-is-indoor').value === 'true',
-             province: document.getElementById('venue-country').value.trim(), // Dùng province thay vì country
-             contact_email: document.getElementById('venue-contact-email').value.trim(),
-             contact_phone: document.getElementById('venue-contact-phone').value.trim(),
-             updated_at: new Date().toISOString()
+            name: document.getElementById('venue-name').value.trim(),
+            address: document.getElementById('venue-address').value.trim(),
+            surface: document.getElementById('venue-surface').value.trim(),
+            is_indoor: document.getElementById('venue-is-indoor').value === 'true',
+            province: document.getElementById('venue-country').value.trim(), // Dùng province thay vì country
+            contact_email: document.getElementById('venue-contact-email').value.trim(),
+            contact_phone: document.getElementById('venue-contact-phone').value.trim(),
+            updated_at: new Date().toISOString()
         };
 
         // -------------------------------------------------------------
@@ -46,13 +46,13 @@ async function handleSaveCourt(e) {
         if (isVenueFieldsEnabled && venueImageInput && venueImageInput.files.length > 0) {
             saveButton.textContent = 'Đang Upload Ảnh Khu vực...';
             finalVenueImagesArray = await uploadFilesToSupabase(venueImageInput.files, 'venues/');
-            
+
             if (finalVenueImagesArray === null) {
                 alert(" Lỗi khi upload ảnh Khu vực. Vui lòng kiểm tra console.");
                 return;
             }
-        } 
-        
+        }
+
         // -------------------------------------------------------------
         // BƯỚC 1: XỬ LÝ VENUE (TẠO MỚI HOẶC CẬP NHẬT)
         // -------------------------------------------------------------
@@ -65,7 +65,7 @@ async function handleSaveCourt(e) {
 
             const venueDataToSave = {
                 ...venueUpdates,
-                images: finalVenueImagesArray, 
+                images: finalVenueImagesArray,
                 created_at: new Date().toISOString(),
                 rating: 0, city: "HN", country: "VN"
             };
@@ -82,13 +82,13 @@ async function handleSaveCourt(e) {
 
         } else if (isVenueFieldsEnabled) {
             // CẬP NHẬT VENUE CŨ (Chỉ chạy nếu người dùng bấm nút Sửa Venue)
-            const updatePayload = {...venueUpdates};
-            if(finalVenueImagesArray) {
+            const updatePayload = { ...venueUpdates };
+            if (finalVenueImagesArray) {
                 updatePayload.images = finalVenueImagesArray;
             } else {
-                 // **KHUYẾN NGHỊ: Giữ lại ảnh cũ nếu không upload ảnh mới (cần logic fetch ảnh cũ)**
+                // **KHUYẾN NGHỊ: Giữ lại ảnh cũ nếu không upload ảnh mới (cần logic fetch ảnh cũ)**
             }
-            
+
             const { error: venueUpdateError } = await supabaseClient
                 .from('venues').update(updatePayload).eq('id', venueId);
 
@@ -96,21 +96,21 @@ async function handleSaveCourt(e) {
                 console.warn(` Lỗi cập nhật khu vực (Venue): ${venueUpdateError.message}.`);
             }
             // Khóa lại các trường Venue sau khi cập nhật thành công
-            toggleVenueFields(true); 
+            toggleVenueFields(true);
         }
-        
+
         // -------------------------------------------------------------
         // BƯỚC 2A: XỬ LÝ UPLOAD ẢNH SÂN (COURT)
         // -------------------------------------------------------------
         const courtImageInput = document.getElementById('court-image-upload');
         let courtImageUrl = null;
-        
+
         if (courtImageInput && courtImageInput.files.length > 0) {
             saveButton.textContent = 'Đang Upload Ảnh Sân...';
             const uploadedUrls = await uploadFilesToSupabase(courtImageInput.files, 'courts/');
-            courtImageUrl = uploadedUrls ? uploadedUrls[0] : null; 
+            courtImageUrl = uploadedUrls ? uploadedUrls[0] : null;
         }
-        
+
         // -------------------------------------------------------------
         // BƯỚC 2B: XỬ LÝ COURT
         // -------------------------------------------------------------
@@ -121,7 +121,7 @@ async function handleSaveCourt(e) {
             default_price_per_hour: parseFloat(document.getElementById('default-price-input').value),
             is_active: document.getElementById('field-status').value === 'active',
             venue_id: venueId,
-            image_url: courtImageUrl 
+            image_url: courtImageUrl
         };
 
         if (courtUpdates.name === '' || courtUpdates.code === '' || isNaN(courtUpdates.capacity) || isNaN(courtUpdates.default_price_per_hour)) {
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const venueSelect = document.getElementById('venue-select');
     const editVenueBtn = document.getElementById('edit-venue-details-btn');
     const venueFieldset = document.getElementById('venue-details-fieldset');
-    
+
     // -----------------------------------------------------------
     // LẮNG NGHE NÚT SỬA CHI TIẾT VENUE
     if (editVenueBtn) {
@@ -186,12 +186,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             //  SỬA LỖI: BẬT các trường Venue
-            toggleVenueFields(false); 
+            toggleVenueFields(false);
             venueFieldset.querySelector('legend').textContent = 'Chi tiết Khu Vực (Đang chỉnh sửa)';
-            
+
             // ẨN nút Sửa
             editVenueBtn.style.display = 'none';
-            
+
             alert("Bạn đang ở chế độ chỉnh sửa chi tiết Khu Vực. Bấm nút 'Lưu Cập Nhật Sân' bên dưới để lưu.");
         });
     }
@@ -250,4 +250,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (saveButton) {
         saveButton.addEventListener('click', handleSaveCourt);
     }
+    document.getElementById('delete-venue-btn').addEventListener('click', async () => {
+        const venueId = document.getElementById('venue-select').value;
+
+        if (!venueId || venueId === "new_venue") {
+            alert("Hãy chọn một Khu Vực hợp lệ để xóa.");
+            return;
+        }
+
+        const confirmDelete = confirm(
+            " Bạn có chắc chắn muốn XÓA Khu Vực này?\n" +
+            " Tất cả Sân thuộc khu vực này cũng sẽ bị xóa!\n" +
+            "Hành động này không thể hoàn tác."
+        );
+
+        if (!confirmDelete) return;
+
+        await deleteVenueAndCourts(venueId);
+    });
+
 });
